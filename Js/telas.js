@@ -1,0 +1,520 @@
+/* =========================
+   ELEMENTOS DAS TELAS
+========================= */
+
+const telaSuspense =
+    document.getElementById("telaSuspense");
+
+const musicaFundo =
+    document.getElementById("musicaFundo");
+
+musicaFundo.volume = 0.6;
+
+const botaoIniciar =
+    document.getElementById("botaoIniciar");
+
+const frase =
+    document.getElementById("frase");
+
+const botaoComecar =
+    document.getElementById("botaoComecar");
+
+const particulas =
+    document.getElementById("particulas");
+
+const telaFoto =
+    document.getElementById("telaFoto");
+
+const botaoContinuar =
+    document.getElementById("botaoContinuar");
+
+const telaMemoria =
+    document.getElementById("telaMemoria");
+
+const botaoMemoria =
+    document.getElementById("botaoMemoria");
+
+const telaVideo =
+    document.getElementById("telaVideo");
+
+
+/* =========================
+   TELA 5
+========================= */
+
+const telaFotos =
+    document.getElementById("telaFotos");
+
+const fotosTela5 =
+    document.querySelectorAll(
+        ".fotosTela5 img"
+    );
+
+
+/* =========================
+   FRASES
+========================= */
+
+const frases = [
+
+    "Eu preparei uma coisa muito especial para você...",
+
+    "Mas antes de começar...",
+
+    "Quero que você se lembre de uma coisa: nossa história é única. ❤️"
+
+];
+
+
+let indiceFrase = 0;
+
+
+/* =========================
+   MOSTRAR FRASE
+========================= */
+
+function mostrarFrase() {
+
+    frase.textContent =
+        frases[indiceFrase];
+
+    frase.classList.remove(
+        "sumir"
+    );
+
+    frase.classList.add(
+        "aparecer"
+    );
+
+
+    setTimeout(() => {
+
+        frase.classList.remove(
+            "aparecer"
+        );
+
+        frase.classList.add(
+            "sumir"
+        );
+
+
+        setTimeout(() => {
+
+            indiceFrase++;
+
+
+            if (
+                indiceFrase <
+                frases.length
+            ) {
+
+                mostrarFrase();
+
+            } else {
+
+                mostrarBotao();
+
+            }
+
+        }, 2000);
+
+    }, 4000);
+
+}
+
+
+/* =========================
+   MOSTRAR BOTÃO
+========================= */
+
+function mostrarBotao() {
+
+    botaoComecar.classList.add(
+        "visivel"
+    );
+
+}
+
+
+/* =========================
+   INICIAR EXPERIÊNCIA
+========================= */
+
+botaoIniciar.addEventListener(
+    "click",
+    function () {
+
+        /* =========================
+           INICIAR MÚSICA
+        ========================= */
+
+        musicaFundo.volume = 0.6;
+
+        musicaFundo.play().catch(() => {
+
+            console.log(
+                "Não foi possível iniciar a música."
+            );
+
+        });
+
+
+        /* =========================
+           ESCONDER BOTÃO
+        ========================= */
+
+        botaoIniciar.classList.add(
+            "sumir"
+        );
+
+
+        /* =========================
+           INICIAR PRIMEIRA MENSAGEM
+        ========================= */
+
+        setTimeout(() => {
+
+            mostrarFrase();
+
+        }, 1000);
+
+    }
+);
+
+
+/* =========================
+   BOTÃO COMEÇAR
+========================= */
+
+botaoComecar.addEventListener(
+    "click",
+    function () {
+
+        /* =========================
+           INICIAR MÚSICA NO TOQUE
+        ========================= */
+
+        musicaFundo.volume = 0.6;
+
+        musicaFundo.play().catch(() => {
+
+            console.log(
+                "Não foi possível iniciar a música."
+            );
+
+        });
+
+
+        telaSuspense.style.transition =
+            "opacity 1.5s ease";
+
+        telaSuspense.style.opacity =
+            "0";
+
+
+        setTimeout(() => {
+
+            telaSuspense.style.display =
+                "none";
+
+            telaFoto.classList.add(
+                "ativa"
+            );
+
+        }, 1500);
+
+    }
+);
+
+
+/* =========================
+   PRIMEIRA FOTO
+========================= */
+
+botaoContinuar.addEventListener(
+    "click",
+    function () {
+
+        telaFoto.style.opacity =
+            "0";
+
+
+        setTimeout(() => {
+
+            telaFoto.style.visibility =
+                "hidden";
+
+
+            telaMemoria.classList.add(
+                "ativa"
+            );
+
+
+            setTimeout(() => {
+
+                telaMemoria.classList.add(
+                    "mostrarFoto"
+                );
+
+            }, 3000);
+
+        }, 1500);
+
+    }
+);
+
+
+/* =========================
+   TEXTOS DA TELA DO VÍDEO
+========================= */
+
+const textosVideo = [
+
+    document.getElementById(
+        "textoVideo1"
+    ),
+
+    document.getElementById(
+        "textoVideo2"
+    ),
+
+    document.getElementById(
+        "textoVideo3"
+    ),
+
+    document.getElementById(
+        "textoVideo4"
+    )
+
+];
+
+
+/* =========================
+   INICIAR TEXTOS DO VÍDEO
+========================= */
+
+function iniciarTextosVideo() {
+
+    textosVideo.forEach(
+        texto => {
+
+            texto.classList.remove(
+                "ativo"
+            );
+
+            texto.classList.remove(
+                "sumindo"
+            );
+
+            texto.style.opacity =
+                "0";
+
+        }
+    );
+
+
+    let indice = 0;
+
+
+    function mostrarProximoTexto() {
+
+        /* =========================
+           TEXTOS TERMINARAM
+        ========================= */
+
+        if (
+            indice >=
+            textosVideo.length
+        ) {
+
+            iniciarTela5();
+
+            return;
+
+        }
+
+
+        const textoAtual =
+            textosVideo[indice];
+
+
+        /* =========================
+           GARANTIR TEXTO LIMPO
+        ========================= */
+
+        textoAtual.classList.remove(
+            "sumindo"
+        );
+
+        textoAtual.style.opacity =
+            "0";
+
+
+        /* =========================
+           MOSTRAR
+        ========================= */
+
+        textoAtual.classList.add(
+            "ativo"
+        );
+
+
+        /* =========================
+           COMEÇAR A SUMIR
+        ========================= */
+
+        setTimeout(() => {
+
+            textoAtual.classList.remove(
+                "ativo"
+            );
+
+            textoAtual.classList.add(
+                "sumindo"
+            );
+
+        }, 5500);
+
+
+        /* =========================
+           PRÓXIMO TEXTO
+        ========================= */
+
+        setTimeout(() => {
+
+            textoAtual.classList.remove(
+                "sumindo"
+            );
+
+            textoAtual.style.opacity =
+                "0";
+
+
+            indice++;
+
+            mostrarProximoTexto();
+
+        }, 7000);
+
+    }
+
+
+    mostrarProximoTexto();
+
+}
+
+
+/* =========================
+   TELA 5 — MURAL
+========================= */
+
+function iniciarTela5() {
+
+    /* =========================
+       MOSTRAR TELA 5
+    ========================= */
+
+    telaFotos.classList.add(
+        "ativa"
+    );
+
+
+    /* =========================
+       GARANTIR FOTOS ESCONDIDAS
+    ========================= */
+
+    fotosTela5.forEach(
+        foto => {
+
+            foto.classList.remove(
+                "ativa"
+            );
+
+        }
+    );
+
+
+    let indiceFoto = 0;
+
+
+    /* =========================
+       MOSTRAR FOTOS UMA POR UMA
+========================= */
+
+    function mostrarProximaFoto() {
+
+        if (
+            indiceFoto >=
+            fotosTela5.length
+        ) {
+
+            return;
+
+        }
+
+
+        /* =========================
+           MOSTRAR FOTO ATUAL
+        ========================= */
+
+        fotosTela5[
+            indiceFoto
+        ].classList.add(
+            "ativa"
+        );
+
+
+        indiceFoto++;
+
+
+        /* =========================
+           PRÓXIMA FOTO
+        ========================= */
+
+        setTimeout(() => {
+
+            mostrarProximaFoto();
+
+        }, 1500);
+
+    }
+
+
+    mostrarProximaFoto();
+
+}
+
+
+/* =========================
+   IR PARA TELA DO VÍDEO
+========================= */
+
+botaoMemoria.addEventListener(
+    "click",
+    function () {
+
+        telaMemoria.style.opacity =
+            "0";
+
+
+        setTimeout(() => {
+
+            telaMemoria.style.visibility =
+                "hidden";
+
+
+            telaVideo.classList.add(
+                "ativa"
+            );
+
+
+            /* =========================
+               INICIAR TEXTOS
+            ========================= */
+
+            iniciarTextosVideo();
+
+        }, 1500);
+
+    }
+);

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Nossa História ❤️</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+<body>
+
+    <main id="app">
+
+        <!-- =========================
+             TELA DE SUSPENSE
+        ========================== -->
+
+        <section
+            id="telaSuspense"
+            class="tela"
+        >
+
+            <div id="particulas"></div>
+
+            <div class="brilho"></div>
+
+            <div class="conteudoSuspense">
+
+                <button id="botaoIniciar">
+
+                    Toque para iniciar ❤️
+
+                </button>
+
+                <p
+                    id="frase"
+                    class="frase"
+                ></p>
+
+                <button id="botaoComecar">
+
+                    Começar nossa história ❤️
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TELA DA PRIMEIRA FOTO
+        ========================== -->
+
+        <section
+            id="telaFoto"
+            class="tela telaFoto"
+        >
+
+            <div class="luzFoto"></div>
+
+            <div class="conteudoFoto">
+
+                <div class="molduraFoto">
+
+                    <img
+                        id="fotoPrincipal"
+                        src="imagens/foto1.jpg"
+                        alt="Nossa primeira lembrança"
+                    >
+
+                </div>
+
+                <div
+                    id="mensagemFoto"
+                    class="mensagemFoto"
+                >
+
+                    <p>
+
+                        Na primeira vez que eu te vi, eu já sabia que você era especial. ❤️
+                        Naquele momento, meu coração já sabia que era você…
+                        como se, de alguma forma, algo nos unil a ser meu amor.
+
+                    </p>
+
+                </div>
+
+                <button
+                    id="botaoContinuar"
+                    class="botaoContinuar"
+                >
+
+                    Continuar →
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TELA DA SEGUNDA MEMÓRIA
+        ========================== -->
+
+        <section
+            id="telaMemoria"
+            class="tela telaMemoria"
+        >
+
+            <div class="conteudoMemoria">
+
+                <p
+                    id="perguntaMemoria"
+                    class="perguntaMemoria"
+                >
+
+                    Você sabe o que eu mais gosto em você?” ❤️
+
+                </p>
+
+
+                <div
+                    id="fotoMemoria"
+                    class="molduraMemoria"
+                >
+
+                    <img
+                        src="imagens/foto2.jpg"
+                        alt="Uma lembrança nossa"
+                    >
+
+                </div>
+
+
+                <div
+                    id="mensagemMemoria"
+                    class="mensagemMemoria"
+                >
+
+                    <p>
+
+                        Não é apenas pelos momentos felizes...”
+
+                    </p>
+
+                    <p>
+
+                        É pela forma como, ao seu lado, até os pequenos momentos se tornam inesquecíveis. ❤️
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="botaoMemoria"
+                    class="botaoContinuar"
+                >
+
+                    Continuar ❤️
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TELA 4 — VÍDEO
+        ========================== -->
+
+        <section
+            id="telaVideo"
+            class="tela telaVideo"
+        >
+
+            <img
+                id="videoRomantico"
+                src="videos/video1.gif"
+                alt="Nossa história"
+            >
+
+            <div class="filtroVideo"></div>
+
+
+            <div class="textoVideo">
+
+                <p id="textoVideo1">
+
+                    E foi assim que, pouco a pouco,
+                    nossa história começou a ganhar
+                    seus próprios momentos. ❤️
+
+                </p>
+
+
+                <p id="textoVideo2">
+
+                    Cada sorriso,
+                    cada olhar,
+                    cada momento ao seu lado...
+
+                </p>
+
+
+                <p id="textoVideo3">
+
+                    Talvez naquele momento
+                    eu ainda não soubesse,
+                    mas você estava se tornando
+                    uma das pessoas mais importantes
+                    da minha vida.
+
+                </p>
+
+
+                <p id="textoVideo4">
+
+                    E quanto mais tempo passava,
+                    mais eu percebia
+                    o quanto era especial
+                    ter você comigo. ❤️
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TELA 5 — MURAL
+        ========================== -->
+
+        <section
+            id="telaFotos"
+            class="tela telaFotos"
+        >
+
+            <div class="fotosTela5">
+
+                <img
+                    src="imagens/foto3.jpg"
+                    alt="Nossa lembrança"
+                >
+
+                <img
+                    src="imagens/foto4.jpg"
+                    alt="Nossa lembrança"
+                >
+
+                <img
+                    src="imagens/foto5.jpg"
+                    alt="Nossa lembrança"
+                >
+
+                <img
+                    src="imagens/foto6.jpg"
+                    alt="Nossa lembrança"
+                >
+
+                <img
+                    src="imagens/foto7.jpg"
+                    alt="Nossa lembrança"
+                >
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <audio
+        id="musicaFundo"
+        src="musica/musica_inicial.mp3"
+        loop
+        preload="auto"
+    ></audio>
+
+
+    <script src="js/inicio.js"></script>
+
+    <script src="js/particulas.js"></script>
+
+    <script src="js/telas.js"></script>
+
+</body>
+
+</html>

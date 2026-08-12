@@ -1,0 +1,176 @@
+/* =========================
+    BOTÕES
+========================= */
+
+#botaoIniciar,
+#botaoComecar,
+.botaoContinuar {
+
+    border: 1px solid
+        rgba(255,255,255,0.35);
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color:
+        rgba(255,255,255,0.95);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        22px;
+
+    padding:
+        12px 28px;
+
+    border-radius:
+        30px;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.35);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+/* =========================
+   EFEITO AO PASSAR
+========================= */
+
+#botaoIniciar:hover,
+#botaoComecar:hover,
+.botaoContinuar:hover {
+
+    background:
+        rgba(255,255,255,0.16);
+
+    transform:
+        scale(1.04);
+
+}
+
+
+/* =========================
+   BOTÃO AO CLICAR
+========================= */
+
+#botaoIniciar:active,
+#botaoComecar:active,
+.botaoContinuar:active {
+
+    transform:
+        scale(0.97);
+
+}
+
+
+/* =========================
+   BOTÃO COMEÇAR
+========================= */
+
+#botaoComecar {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+}
+
+
+/* =========================
+   BOTÃO COMEÇAR VISÍVEL
+========================= */
+
+#botaoComecar.visivel {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    animation:
+        aparecerBotao
+        1.5s
+        ease
+        forwards;
+
+}
+
+
+/* =========================
+   BOTÃO INICIAR SUMINDO
+========================= */
+
+#botaoIniciar.sumir {
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================
+   ANIMAÇÃO
+========================= */
+
+@keyframes aparecerBotao {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    #botaoIniciar,
+    #botaoComecar,
+    .botaoContinuar {
+
+        font-size:
+            clamp(
+                18px,
+                5vw,
+                23px
+            );
+
+        padding:
+            10px 22px;
+
+    }
+
+}
