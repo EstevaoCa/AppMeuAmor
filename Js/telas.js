@@ -1,5 +1,5 @@
 /* =========================
-   ELEMENTOS DAS TELAS
+    ELEMENTOS DAS TELAS
 ========================= */
 
 const telaSuspense =
@@ -37,9 +37,11 @@ const botaoMemoria =
 const telaVideo =
     document.getElementById("telaVideo");
 
+const telaAmor =
+    document.getElementById("telaAmor");
 
 /* =========================
-   TELA 5
+    TELA 5
 ========================= */
 
 const telaFotos =
@@ -52,7 +54,7 @@ const fotosTela5 =
 
 
 /* =========================
-   FRASES
+    FRASES
 ========================= */
 
 const frases = [
@@ -70,7 +72,7 @@ let indiceFrase = 0;
 
 
 /* =========================
-   MOSTRAR FRASE
+    MOSTRAR FRASE
 ========================= */
 
 function mostrarFrase() {
@@ -124,7 +126,7 @@ function mostrarFrase() {
 
 
 /* =========================
-   MOSTRAR BOTÃO
+    MOSTRAR BOTÃO
 ========================= */
 
 function mostrarBotao() {
@@ -137,7 +139,7 @@ function mostrarBotao() {
 
 
 /* =========================
-   INICIAR EXPERIÊNCIA
+    INICIAR EXPERIÊNCIA
 ========================= */
 
 botaoIniciar.addEventListener(
@@ -145,7 +147,7 @@ botaoIniciar.addEventListener(
     function () {
 
         /* =========================
-           INICIAR MÚSICA
+            INICIAR MÚSICA
         ========================= */
 
         musicaFundo.volume = 0.6;
@@ -160,7 +162,7 @@ botaoIniciar.addEventListener(
 
 
         /* =========================
-           ESCONDER BOTÃO
+            ESCONDER BOTÃO
         ========================= */
 
         botaoIniciar.classList.add(
@@ -169,7 +171,7 @@ botaoIniciar.addEventListener(
 
 
         /* =========================
-           INICIAR PRIMEIRA MENSAGEM
+            INICIAR PRIMEIRA MENSAGEM
         ========================= */
 
         setTimeout(() => {
@@ -183,7 +185,7 @@ botaoIniciar.addEventListener(
 
 
 /* =========================
-   BOTÃO COMEÇAR
+    BOTÃO COMEÇAR
 ========================= */
 
 botaoComecar.addEventListener(
@@ -191,7 +193,7 @@ botaoComecar.addEventListener(
     function () {
 
         /* =========================
-           INICIAR MÚSICA NO TOQUE
+            INICIAR MÚSICA NO TOQUE
         ========================= */
 
         musicaFundo.volume = 0.6;
@@ -228,7 +230,7 @@ botaoComecar.addEventListener(
 
 
 /* =========================
-   PRIMEIRA FOTO
+    PRIMEIRA FOTO
 ========================= */
 
 botaoContinuar.addEventListener(
@@ -265,7 +267,7 @@ botaoContinuar.addEventListener(
 
 
 /* =========================
-   TEXTOS DA TELA DO VÍDEO
+    TEXTOS DA TELA DO VÍDEO
 ========================= */
 
 const textosVideo = [
@@ -290,7 +292,7 @@ const textosVideo = [
 
 
 /* =========================
-   INICIAR TEXTOS DO VÍDEO
+    INICIAR TEXTOS DO VÍDEO
 ========================= */
 
 function iniciarTextosVideo() {
@@ -319,7 +321,7 @@ function iniciarTextosVideo() {
     function mostrarProximoTexto() {
 
         /* =========================
-           TEXTOS TERMINARAM
+            TEXTOS TERMINARAM
         ========================= */
 
         if (
@@ -339,7 +341,7 @@ function iniciarTextosVideo() {
 
 
         /* =========================
-           GARANTIR TEXTO LIMPO
+            GARANTIR TEXTO LIMPO
         ========================= */
 
         textoAtual.classList.remove(
@@ -351,7 +353,7 @@ function iniciarTextosVideo() {
 
 
         /* =========================
-           MOSTRAR
+            MOSTRAR
         ========================= */
 
         textoAtual.classList.add(
@@ -360,7 +362,7 @@ function iniciarTextosVideo() {
 
 
         /* =========================
-           COMEÇAR A SUMIR
+            COMEÇAR A SUMIR
         ========================= */
 
         setTimeout(() => {
@@ -377,7 +379,7 @@ function iniciarTextosVideo() {
 
 
         /* =========================
-           PRÓXIMO TEXTO
+            PRÓXIMO TEXTO
         ========================= */
 
         setTimeout(() => {
@@ -405,7 +407,7 @@ function iniciarTextosVideo() {
 
 
 /* =========================
-   TELA 5 — MURAL
+    TELA 5 — MURAL
 ========================= */
 
 function iniciarTela5() {
@@ -439,7 +441,7 @@ function iniciarTela5() {
 
     /* =========================
        MOSTRAR FOTOS UMA POR UMA
-========================= */
+    ========================= */
 
     function mostrarProximaFoto() {
 
@@ -448,13 +450,24 @@ function iniciarTela5() {
             fotosTela5.length
         ) {
 
+            /* =========================
+               TODAS AS FOTOS APARECERAM
+            ========================= */
+
+            setTimeout(() => {
+
+                iniciarTela6();
+
+            }, 5000);
+
+
             return;
 
         }
 
 
         /* =========================
-           MOSTRAR FOTO ATUAL
+           MOSTRAR FOTO
         ========================= */
 
         fotosTela5[
@@ -518,3 +531,28 @@ botaoMemoria.addEventListener(
 
     }
 );
+
+/* =========================
+   TELA 6 — EU TE AMO
+========================= */
+
+function iniciarTela6() {
+
+    /* =========================
+       ESCONDER TELA 5
+    ========================= */
+
+    telaFotos.classList.remove(
+        "ativa"
+    );
+
+
+    /* =========================
+       MOSTRAR TELA 6
+    ========================= */
+
+    telaAmor.classList.add(
+        "ativa"
+    );
+
+}
