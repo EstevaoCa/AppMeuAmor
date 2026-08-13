@@ -2,7 +2,7 @@
     "name": "Nosso Cantinho ❤️",
     "short_name": "Nosso Cantinho",
     "description": "Nosso cantinho especial ❤️",
-    "start_url": "./index.html",
+    "start_url": "../index.html",
     "display": "standalone",
     "background_color": "#000000",
     "theme_color": "#000000",
