@@ -2425,3 +2425,74 @@ botaoSair.addEventListener(
 
     }
 );
+
+/* =========================
+   MÚSICA DE FUNDO DO APP ❤️
+========================= */
+
+const musicaApp =
+    document.getElementById(
+        "musicaApp"
+    );
+
+
+/* =========================
+   VOLUME
+========================= */
+
+musicaApp.volume = 0.35;
+
+
+/* =========================
+   INICIAR MÚSICA
+========================= */
+
+function iniciarMusicaApp() {
+
+    if (!musicaApp) {
+
+        return;
+
+    }
+
+
+    musicaApp.play()
+        .then(
+            function () {
+
+                console.log(
+                    "Música do Nosso Cantinho iniciada ❤️"
+                );
+
+            }
+        )
+        .catch(
+            function (erro) {
+
+                console.log(
+                    "O navegador bloqueou o início automático da música."
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================
+   INICIAR MÚSICA AO ENTRAR NO APP
+========================= */
+
+if (
+    sessionStorage.getItem(
+        "iniciarMusicaApp"
+    ) === "true"
+) {
+
+    iniciarMusicaApp();
+
+    sessionStorage.removeItem(
+        "iniciarMusicaApp"
+    );
+
+}

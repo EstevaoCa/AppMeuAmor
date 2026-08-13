@@ -197,12 +197,16 @@ botaoEntrarDireto.addEventListener(
     "click",
     function () {
 
+        sessionStorage.setItem(
+            "iniciarMusicaApp",
+            "true"
+        );
+
         window.location.href =
             "app/index.html?inicio=1";
 
     }
 );
-
 /* =========================
    CONTINUAR HISTÓRIA
 ========================= */
