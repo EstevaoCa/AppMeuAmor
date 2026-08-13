@@ -2420,8 +2420,7 @@ botaoSair.addEventListener(
         }
 
 
-        window.location.href =
-            "about:blank";
+        window.close();
 
     }
 );
