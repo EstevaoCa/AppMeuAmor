@@ -170,27 +170,47 @@
 
 
 /* =========================
-   BRILHO
+   LUZ CENTRAL — GALÁXIA
 ========================= */
 
 .brilho {
 
     position: absolute;
 
-    inset: 0;
+    width: min(75vw, 650px);
+    height: min(75vw, 650px);
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
 
     pointer-events: none;
 
     background:
         radial-gradient(
-            circle at center,
-            rgba(255,120,170,0.16),
-            transparent 60%
+            circle,
+
+            rgba(120, 35, 65, 0.38) 0%,
+
+            rgba(70, 20, 40, 0.25) 25%,
+
+            rgba(33, 15, 22, 0.18) 45%,
+
+            rgba(20, 8, 14, 0.08) 60%,
+
+            transparent 72%
         );
+
+    filter:
+        blur(8px);
 
     animation:
         brilhoSuspense
-        5s
+        6s
         ease-in-out
         infinite;
 
@@ -198,17 +218,18 @@
 
 
 /* =========================
-   ANIMAÇÃO DO BRILHO
+   PULSAÇÃO DA LUZ
 ========================= */
 
 @keyframes brilhoSuspense {
 
     0% {
 
-        opacity: 0.35;
+        opacity: 0.55;
 
         transform:
-            scale(0.95);
+            translate(-50%, -50%)
+            scale(0.85);
 
     }
 
@@ -217,16 +238,18 @@
         opacity: 1;
 
         transform:
-            scale(1.05);
+            translate(-50%, -50%)
+            scale(1.08);
 
     }
 
     100% {
 
-        opacity: 0.35;
+        opacity: 0.55;
 
         transform:
-            scale(0.95);
+            translate(-50%, -50%)
+            scale(0.85);
 
     }
 
@@ -389,3 +412,4 @@
     }
 
 }
+
