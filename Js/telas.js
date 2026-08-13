@@ -1,74 +1,3 @@
-/* =========================
-    ELEMENTOS DAS TELAS
-========================= */
-
-const telaSuspense =
-    document.getElementById("telaSuspense");
-
-const musicaFundo =
-    document.getElementById("musicaFundo");
-
-musicaFundo.volume = 0.6;
-
-const botaoIniciar =
-    document.getElementById("botaoIniciar");
-
-const frase =
-    document.getElementById("frase");
-
-const botaoComecar =
-    document.getElementById("botaoComecar");
-
-const particulas =
-    document.getElementById("particulas");
-
-const telaFoto =
-    document.getElementById("telaFoto");
-
-const botaoContinuar =
-    document.getElementById("botaoContinuar");
-
-const telaMemoria =
-    document.getElementById("telaMemoria");
-
-const botaoMemoria =
-    document.getElementById("botaoMemoria");
-
-const telaVideo =
-    document.getElementById("telaVideo");
-
-const telaAmor =
-    document.getElementById("telaAmor");
-
-/* =========================
-    TELA 5
-========================= */
-
-const telaFotos =
-    document.getElementById("telaFotos");
-
-const fotosTela5 =
-    document.querySelectorAll(
-        ".fotosTela5 img"
-    );
-
-
-/* =========================
-    FRASES
-========================= */
-
-const frases = [
-
-    "Eu preparei uma coisa muito especial para você...",
-
-    "Mas antes de começar...",
-
-    "Quero que você se lembre de uma coisa: nossa história é única. ❤️"
-
-];
-
-
-let indiceFrase = 0;
 
 
 /* =========================
@@ -145,6 +74,40 @@ function mostrarBotao() {
 botaoIniciar.addEventListener(
     "click",
     function () {
+
+        /* =========================
+            VERIFICAR SE JÁ ASSISTIU
+            ========================= */
+
+            const historiaAssistida =
+                localStorage.getItem(
+                    "historiaAssistida"
+                );
+
+
+            if (historiaAssistida === "true") {
+
+                botaoComecar.style.display =
+                    "none";
+
+                botaoEntrarDireto.style.display =
+                    "block";
+
+                botaoContinuarHistoria.style.display =
+                    "block";
+
+            } else {
+
+                botaoComecar.style.display =
+                    "block";
+
+                botaoEntrarDireto.style.display =
+                    "none";
+
+                botaoContinuarHistoria.style.display =
+                    "none";
+
+            }
 
         /* =========================
             INICIAR MÚSICA
@@ -499,7 +462,7 @@ function iniciarTela5() {
 
 
 /* =========================
-   IR PARA TELA DO VÍDEO
+    IR PARA TELA DO VÍDEO
 ========================= */
 
 botaoMemoria.addEventListener(
@@ -522,7 +485,7 @@ botaoMemoria.addEventListener(
 
 
             /* =========================
-               INICIAR TEXTOS
+                INICIAR TEXTOS
             ========================= */
 
             iniciarTextosVideo();
@@ -533,13 +496,13 @@ botaoMemoria.addEventListener(
 );
 
 /* =========================
-   TELA 6 — EU TE AMO
+    TELA 6 — EU TE AMO
 ========================= */
 
 function iniciarTela6() {
 
     /* =========================
-       ESCONDER TELA 5
+        ESCONDER TELA 5
     ========================= */
 
     telaFotos.classList.remove(
@@ -548,11 +511,40 @@ function iniciarTela6() {
 
 
     /* =========================
-       MOSTRAR TELA 6
+        MOSTRAR TELA 6
     ========================= */
 
     telaAmor.classList.add(
         "ativa"
+    );
+
+}
+
+/* =========================
+    ENTRAR NO APLICATIVO
+========================= */
+
+const botaoEntrarApp =
+    document.getElementById(
+        "botaoEntrarApp"
+    );
+
+
+if (botaoEntrarApp) {
+
+    botaoEntrarApp.addEventListener(
+        "click",
+        function () {
+
+            localStorage.setItem(
+                "historiaAssistida",
+                "true"
+            );
+
+            window.location.href =
+                "app/index.html";
+
+            }
     );
 
 }

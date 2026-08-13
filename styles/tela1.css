@@ -278,3 +278,114 @@
     }
 
 }
+
+/* =========================
+   BOTÕES DE RETORNO
+========================= */
+
+#botaoEntrarDireto,
+#botaoContinuarHistoria {
+
+    margin-top: 15px;
+
+    padding:
+        12px 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.35);
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color:
+        rgba(255,255,255,0.96);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(
+            20px,
+            4vw,
+            28px
+        );
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    box-shadow:
+        0 5px 25px
+        rgba(0,0,0,0.35);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+
+}
+
+
+/* =========================
+   EFEITO AO PASSAR
+========================= */
+
+#botaoEntrarDireto:hover,
+#botaoContinuarHistoria:hover {
+
+    background:
+        rgba(255,255,255,0.15);
+
+    border-color:
+        rgba(255,255,255,0.55);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================
+   AO TOCAR
+========================= */
+
+#botaoEntrarDireto:active,
+#botaoContinuarHistoria:active {
+
+    transform:
+        scale(0.97);
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    #botaoEntrarDireto,
+    #botaoContinuarHistoria {
+
+        width: 90%;
+
+        max-width: 320px;
+
+        padding:
+            11px 20px;
+
+        font-size:
+            21px;
+
+    }
+
+}

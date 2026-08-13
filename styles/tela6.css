@@ -273,3 +273,186 @@
     z-index: 2;
 
 }
+
+/* =========================
+   MENSAGEM DO APP
+========================= */
+
+.mensagemApp {
+
+    width: min(90%, 700px);
+
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(
+            21px,
+            4vw,
+            32px
+        );
+
+    line-height: 1.35;
+
+    color:
+        rgba(255,255,255,0.95);
+
+    text-align: center;
+
+    text-shadow:
+        0 2px 10px
+        rgba(0,0,0,0.8);
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity 1.5s ease 2s,
+        transform 1.5s ease 2s;
+
+}
+
+
+/* =========================
+   APARECER
+========================= */
+
+.telaAmor.ativa
+.mensagemApp {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================
+   BOTÃO ENTRAR NO APP
+========================= */
+
+.botaoEntrarApp {
+
+    border: 1px solid
+        rgba(255,255,255,0.4);
+
+    background:
+        rgba(255,255,255,0.1);
+
+    color:
+        rgba(255,255,255,0.98);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(
+            20px,
+            4vw,
+            28px
+        );
+
+    padding:
+        12px 30px;
+
+    border-radius:
+        30px;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    box-shadow:
+        0 5px 25px
+        rgba(0,0,0,0.4);
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity 1.5s ease 3s,
+        transform 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+/* =========================
+   MOSTRAR BOTÃO
+========================= */
+
+.telaAmor.ativa
+.botaoEntrarApp {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================
+   EFEITO DO BOTÃO
+========================= */
+
+.botaoEntrarApp:hover {
+
+    background:
+        rgba(255,255,255,0.18);
+
+    transform:
+        scale(1.04);
+
+}
+
+
+.botaoEntrarApp:active {
+
+    transform:
+        scale(0.97);
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .mensagemApp {
+
+        width: 90%;
+
+        font-size:
+            clamp(
+                20px,
+                5vw,
+                27px
+            );
+
+    }
+
+
+    .botaoEntrarApp {
+
+        padding:
+            10px 25px;
+
+    }
+
+}
