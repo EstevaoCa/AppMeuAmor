@@ -549,7 +549,7 @@ if (botaoEntrarApp) {
 
 
             window.location.href =
-                "app/index.html";
+                "Nosso Cantinho/index.html";
 
         }
     );

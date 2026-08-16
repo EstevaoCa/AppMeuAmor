@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "**/android": true,Get-ChildItem
+        "**/www": true,
+        "**/node_modules": true,
+    }
+}

@@ -203,7 +203,7 @@ botaoEntrarDireto.addEventListener(
         );
 
         window.location.href =
-            "app/index.html?inicio=1";
+            "Nosso Cantinho/index.html?inicio=1";
 
     }
 );
