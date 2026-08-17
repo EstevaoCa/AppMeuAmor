@@ -60,12 +60,47 @@ const botaoSair =
         "botaoSair"
     );
 
+
+
+
+/* =========================
+   MENU SUPERIOR
+========================= */
+
+const botaoMenu =
+    document.getElementById(
+        "botaoMenu"
+    );
+
+const menuSuperiorApp =
+    document.getElementById(
+        "menuSuperiorApp"
+    );
+
+const botaoConfiguracoes =
+    document.getElementById(
+        "botaoConfiguracoes"
+    );
+
+const painelConfiguracoes =
+    document.getElementById(
+        "painelConfiguracoes"
+    );
+
+const botaoFecharConfiguracoes =
+    document.getElementById(
+        "botaoFecharConfiguracoes"
+    );
+
+const botaoMusicaApp =
+    document.getElementById(
+        "botaoMusicaApp"
+    );
+
+
 function mostrarBotoesSuperiores() {
 
-    botaoInicio.style.display =
-        "block";
-
-    botaoSair.style.display =
+    botaoMenu.style.display =
         "block";
 
 }
@@ -73,14 +108,105 @@ function mostrarBotoesSuperiores() {
 
 function esconderBotoesSuperiores() {
 
-    botaoInicio.style.display =
+    botaoMenu.style.display =
         "none";
 
-    botaoSair.style.display =
-        "none";
+    menuSuperiorApp.classList.remove(
+        "aberto"
+    );
+
+    painelConfiguracoes.classList.remove(
+        "aberto"
+    );
 
 }
 
+/* =========================
+   ☰ ABRIR / FECHAR MENU
+========================= */
+
+botaoMenu.addEventListener(
+    "click",
+    function () {
+
+        menuSuperiorApp.classList.toggle(
+            "aberto"
+        );
+
+    }
+);
+
+
+/* =========================
+   ⚙️ CONFIGURAÇÕES
+========================= */
+
+botaoConfiguracoes.addEventListener(
+    "click",
+    function () {
+
+        menuSuperiorApp.classList.remove(
+            "aberto"
+        );
+
+        painelConfiguracoes.classList.add(
+            "aberto"
+        );
+
+    }
+);
+
+
+/* =========================
+   FECHAR CONFIGURAÇÕES
+========================= */
+
+botaoFecharConfiguracoes.addEventListener(
+    "click",
+    function () {
+
+        painelConfiguracoes.classList.remove(
+            "aberto"
+        );
+
+    }
+);
+
+/* =========================
+   FECHAR AO CLICAR FORA
+========================= */
+
+document.addEventListener(
+    "click",
+    function (evento) {
+
+        if (
+            menuSuperiorApp.classList.contains("aberto") &&
+            !menuSuperiorApp.contains(evento.target) &&
+            !botaoMenu.contains(evento.target)
+        ) {
+
+            menuSuperiorApp.classList.remove(
+                "aberto"
+            );
+
+        }
+
+
+        if (
+            painelConfiguracoes.classList.contains("aberto") &&
+            !painelConfiguracoes.contains(evento.target) &&
+            !botaoConfiguracoes.contains(evento.target)
+        ) {
+
+            painelConfiguracoes.classList.remove(
+                "aberto"
+            );
+
+        }
+
+    }
+);
 
 /* =========================
    🏠 VOLTAR PARA O INDEX PRINCIPAL
@@ -133,6 +259,76 @@ const musicaApp =
         "musicaApp"
     );
 
+const musicaAtiva =
+    localStorage.getItem(
+        "musicaAppAtiva"
+    );
+
+
+if (
+    musicaAtiva === "false"
+) {
+
+    botaoMusicaApp.textContent =
+        "OFF";
+
+    botaoMusicaApp.classList.remove(
+        "ativo"
+    );
+
+}
+
+/* =========================
+   🎵 ATIVAR / DESATIVAR MÚSICA
+========================= */
+
+botaoMusicaApp.addEventListener(
+    "click",
+    function () {
+
+        const estaAtiva =
+            localStorage.getItem(
+                "musicaAppAtiva"
+            ) !== "false";
+
+
+        if (estaAtiva) {
+
+            musicaApp.pause();
+
+            localStorage.setItem(
+                "musicaAppAtiva",
+                "false"
+            );
+
+            botaoMusicaApp.textContent =
+                "OFF";
+
+            botaoMusicaApp.classList.remove(
+                "ativo"
+            );
+
+        } else {
+
+            localStorage.setItem(
+                "musicaAppAtiva",
+                "true"
+            );
+
+            botaoMusicaApp.textContent =
+                "ON";
+
+            botaoMusicaApp.classList.add(
+                "ativo"
+            );
+
+            iniciarMusicaApp();
+
+        }
+
+    }
+);
+
 
 /* =========================
    VOLUME
@@ -184,7 +380,10 @@ function iniciarMusicaApp() {
 if (
     sessionStorage.getItem(
         "iniciarMusicaApp"
-    ) === "true"
+    ) === "true" &&
+    localStorage.getItem(
+        "musicaAppAtiva"
+    ) !== "false"
 ) {
 
     iniciarMusicaApp();
