@@ -167,6 +167,25 @@ async function carregarFotos() {
 
     }
 
+    fotosVisualizador =
+    fotos.map(
+        function (item) {
+
+            return {
+
+                url:
+                    URL.createObjectURL(
+                        item.arquivo
+                    ),
+
+                nome:
+                    item.nome
+
+            };
+
+        }
+    );
+
 
     fotos.forEach(
         function (item) {
@@ -201,6 +220,25 @@ async function carregarFotos() {
 
             imagem.alt =
                 item.nome;
+
+
+            /* =========================
+               ABRIR FOTO GRANDE
+               NOVA FUNÇÃO
+            ========================= */
+
+            imagem.addEventListener(
+                "click",
+                function () {
+
+                    abrirVisualizadorFoto(
+                        url,
+                        item.nome,
+                        fotos.indexOf(item)
+                    );
+
+                }
+            );
 
 
             const botaoExcluir =
@@ -267,3 +305,384 @@ async function carregarFotos() {
     );
 
 }
+
+/* =========================
+   FOTOS DO VISUALIZADOR
+========================= */
+
+let fotosVisualizador = [];
+
+let indiceFotoAtual = 0;
+
+
+
+/* =========================
+   VISUALIZADOR DE FOTO
+   COM SETAS
+========================= */
+
+function abrirVisualizadorFoto(
+    url,
+    nome,
+    indice
+) {
+
+    indiceFotoAtual =
+        indice;
+
+
+    let visualizador =
+        document.getElementById(
+            "visualizadorFoto"
+        );
+
+
+    if (!visualizador) {
+
+        visualizador =
+            document.createElement(
+                "div"
+            );
+
+        visualizador.id =
+            "visualizadorFoto";
+
+        visualizador.className =
+            "visualizadorFoto";
+
+
+        /* =========================
+           BOTÃO FECHAR
+        ========================= */
+
+        const botaoFechar =
+            document.createElement(
+                "button"
+            );
+
+        botaoFechar.className =
+            "botaoFecharFoto";
+
+        botaoFechar.textContent =
+            "✕";
+
+        botaoFechar.setAttribute(
+            "aria-label",
+            "Fechar foto"
+        );
+
+
+        /* =========================
+           SETA ESQUERDA
+        ========================= */
+
+        const botaoAnterior =
+            document.createElement(
+                "button"
+            );
+
+        botaoAnterior.className =
+            "setaFoto setaFotoAnterior";
+
+        botaoAnterior.textContent =
+            "‹";
+
+        botaoAnterior.setAttribute(
+            "aria-label",
+            "Foto anterior"
+        );
+
+
+        /* =========================
+           SETA DIREITA
+        ========================= */
+
+        const botaoProxima =
+            document.createElement(
+                "button"
+            );
+
+        botaoProxima.className =
+            "setaFoto setaFotoProxima";
+
+        botaoProxima.textContent =
+            "›";
+
+        botaoProxima.setAttribute(
+            "aria-label",
+            "Próxima foto"
+        );
+
+
+        /* =========================
+           IMAGEM GRANDE
+        ========================= */
+
+        const imagemGrande =
+            document.createElement(
+                "img"
+            );
+
+        imagemGrande.className =
+            "imagemVisualizada";
+
+        imagemGrande.alt =
+            nome;
+
+
+        /* =========================
+           MONTAR VISUALIZADOR
+        ========================= */
+
+        visualizador.appendChild(
+            botaoFechar
+        );
+
+        visualizador.appendChild(
+            botaoAnterior
+        );
+
+        visualizador.appendChild(
+            imagemGrande
+        );
+
+        visualizador.appendChild(
+            botaoProxima
+        );
+
+
+        document.body.appendChild(
+            visualizador
+        );
+
+
+        /* =========================
+           FECHAR
+        ========================= */
+
+        botaoFechar.addEventListener(
+            "click",
+            function () {
+
+                fecharVisualizadorFoto();
+
+            }
+        );
+
+
+        /* =========================
+           FOTO ANTERIOR
+        ========================= */
+
+        botaoAnterior.addEventListener(
+            "click",
+            function (evento) {
+
+                evento.stopPropagation();
+
+                mudarFotoVisualizador(
+                    -1
+                );
+
+            }
+        );
+
+
+        /* =========================
+           PRÓXIMA FOTO
+        ========================= */
+
+        botaoProxima.addEventListener(
+            "click",
+            function (evento) {
+
+                evento.stopPropagation();
+
+                mudarFotoVisualizador(
+                    1
+                );
+
+            }
+        );
+
+
+        /* =========================
+           FECHAR CLICANDO FORA
+        ========================= */
+
+        visualizador.addEventListener(
+            "click",
+            function (evento) {
+
+                if (
+                    evento.target ===
+                    visualizador
+                ) {
+
+                    fecharVisualizadorFoto();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    const imagemGrande =
+        visualizador.querySelector(
+            ".imagemVisualizada"
+        );
+
+
+    imagemGrande.src =
+        url;
+
+    imagemGrande.alt =
+        nome;
+
+
+    visualizador.classList.add(
+        "aberto"
+    );
+
+
+    document.body.classList.add(
+        "visualizadorAberto"
+    );
+
+}
+
+
+/* =========================
+   MUDAR FOTO
+========================= */
+
+function mudarFotoVisualizador(
+    direcao
+) {
+
+    if (
+        fotosVisualizador.length === 0
+    ) {
+
+        return;
+
+    }
+
+
+    indiceFotoAtual +=
+        direcao;
+
+
+    /* =========================
+       VOLTAR PARA A ÚLTIMA
+       AO PASSAR DA PRIMEIRA
+    ========================= */
+
+    if (
+        indiceFotoAtual < 0
+    ) {
+
+        indiceFotoAtual =
+            fotosVisualizador.length - 1;
+
+    }
+
+
+    /* =========================
+       VOLTAR PARA A PRIMEIRA
+       AO PASSAR DA ÚLTIMA
+    ========================= */
+
+    if (
+        indiceFotoAtual >=
+        fotosVisualizador.length
+    ) {
+
+        indiceFotoAtual = 0;
+
+    }
+
+
+    const foto =
+        fotosVisualizador[
+            indiceFotoAtual
+        ];
+
+
+    const visualizador =
+        document.getElementById(
+            "visualizadorFoto"
+        );
+
+
+    const imagemGrande =
+        visualizador.querySelector(
+            ".imagemVisualizada"
+        );
+
+
+    imagemGrande.src =
+        foto.url;
+
+    imagemGrande.alt =
+        foto.nome;
+
+}
+
+
+
+
+/* =========================
+   FECHAR VISUALIZADOR
+   NOVA FUNÇÃO
+========================= */
+
+function fecharVisualizadorFoto() {
+
+    const visualizador =
+        document.getElementById(
+            "visualizadorFoto"
+        );
+
+
+    if (!visualizador) {
+
+        return;
+
+    }
+
+
+    visualizador.classList.remove(
+        "aberto"
+    );
+
+
+    document.body.classList.remove(
+        "visualizadorAberto"
+    );
+
+}
+
+
+/* =========================
+   FECHAR COM ESC
+   NOVA FUNÇÃO
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function (evento) {
+
+        if (
+            evento.key === "Escape"
+        ) {
+
+            fecharVisualizadorFoto();
+
+        }
+
+    }
+);
+

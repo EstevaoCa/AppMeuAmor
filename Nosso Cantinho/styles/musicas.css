@@ -1,4 +1,3 @@
-
 /* =========================
    TELA DE MÚSICAS
 ========================= */
@@ -175,18 +174,31 @@
 
     flex-direction: column;
 
-    gap: 18px;
+    gap: 16px;
 
 }
 
 
 /* =========================
-   NOME DAS MÚSICAS
+   MENSAGEM
 ========================= */
 
 #musicasSalvas p {
 
-    color: #fff;
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color:
+        rgba(255, 255, 255, 0.7);
+
+    font-size: 21px;
 
 }
 
@@ -201,7 +213,8 @@
 
     margin-bottom: 0;
 
-    color: white;
+    color:
+        rgba(255,255,255,0.95);
 
     font-size: 19px;
 
@@ -242,11 +255,39 @@
     column-gap: 10px;
 
     padding:
-        10px 2px;
+        14px 12px;
 
-    border-bottom:
+    border:
         1px solid
         rgba(255,255,255,0.10);
+
+    border-radius: 14px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    box-shadow:
+        0 8px 30px
+        rgba(0,0,0,0.30);
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.itemMusica:hover {
+
+    background:
+        rgba(255,255,255,0.055);
+
+    border-color:
+        rgba(255,255,255,0.16);
+
+    transform:
+        translateY(-1px);
 
 }
 
@@ -288,7 +329,8 @@
 
     transition:
         background 0.2s ease,
-        transform 0.2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 
 }
 
@@ -300,6 +342,10 @@
 
     transform:
         scale(1.05);
+
+    box-shadow:
+        0 0 18px
+        rgba(255,120,170,0.15);
 
 }
 
@@ -327,7 +373,7 @@
     background: transparent;
 
     color:
-        rgba(255,255,255,0.55);
+        rgba(255,255,255,0.45);
 
     font-size: 15px;
 
@@ -380,7 +426,7 @@
 
     gap: 8px;
 
-    margin-top: 5px;
+    margin-top: 7px;
 
 }
 
@@ -416,7 +462,7 @@
     flex-shrink: 0;
 
     color:
-        rgba(255,255,255,0.60);
+        rgba(255,255,255,0.55);
 
     font-size: 11px;
 
@@ -475,7 +521,7 @@
 
         margin-top: 25px;
 
-        gap: 14px;
+        gap: 12px;
 
     }
 
@@ -490,7 +536,9 @@
         column-gap: 9px;
 
         padding:
-            9px 2px;
+            11px 9px;
+
+        border-radius: 12px;
 
     }
 
@@ -523,5 +571,330 @@
         font-size: 10px;
 
     }
+
+}
+
+/* =========================
+   PLAYER PRINCIPAL
+   PASSO 1
+========================= */
+
+.itemMusica {
+
+    position: relative;
+
+    padding:
+        16px 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius:
+        16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,120,170,0.08),
+            rgba(255,255,255,0.035)
+        );
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,0.35);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+/* =========================
+   DESTAQUE AO PASSAR O MOUSE
+========================= */
+
+.itemMusica:hover {
+
+    border-color:
+        rgba(255,120,170,0.25);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,120,170,0.11),
+            rgba(255,255,255,0.045)
+        );
+
+    box-shadow:
+        0 12px 40px
+        rgba(0,0,0,0.45);
+
+}
+
+
+/* =========================
+   PLAY MAIS ELEGANTE
+========================= */
+
+.botaoPlayMusica {
+
+    background:
+        rgba(255,120,170,0.14);
+
+    border:
+        1px solid
+        rgba(255,120,170,0.25);
+
+    box-shadow:
+        0 0 18px
+        rgba(255,120,170,0.08);
+
+}
+
+
+.botaoPlayMusica:hover {
+
+    background:
+        rgba(255,120,170,0.24);
+
+    box-shadow:
+        0 0 22px
+        rgba(255,120,170,0.16);
+
+}
+
+
+/* =========================
+   NOME DA MÚSICA
+========================= */
+
+.nomeMusica {
+
+    color:
+        rgba(255,255,255,0.96);
+
+    text-shadow:
+        0 1px 8px
+        rgba(0,0,0,0.5);
+
+}
+
+
+/* =========================
+   BARRA DE PROGRESSO
+   PASSO 3
+========================= */
+
+.barraMusica {
+
+    flex: 1;
+
+    width: 100%;
+
+    height: 5px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,0.12);
+
+    outline: none;
+
+    opacity: 0.9;
+
+}
+
+
+/* =========================
+   TRILHA — CHROME / EDGE
+========================= */
+
+.barraMusica::-webkit-slider-runnable-track {
+
+    height: 5px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,0.12);
+
+}
+
+
+/* =========================
+   BOLINHA — CHROME / EDGE
+========================= */
+
+.barraMusica::-webkit-slider-thumb {
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 12px;
+    height: 12px;
+
+    margin-top: -3.5px;
+
+    border:
+        1px solid
+        rgba(255,120,170,0.55);
+
+    border-radius: 50%;
+
+    background:
+        #ff78aa;
+
+    box-shadow:
+        0 0 10px
+        rgba(255,120,170,0.30);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+/* =========================
+   EFEITO AO PASSAR
+========================= */
+
+.barraMusica:hover::-webkit-slider-thumb {
+
+    transform:
+        scale(1.2);
+
+    box-shadow:
+        0 0 14px
+        rgba(255,120,170,0.45);
+
+}
+
+
+/* =========================
+   FIREFOX
+========================= */
+
+.barraMusica::-moz-range-track {
+
+    height: 5px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,0.12);
+
+}
+
+
+.barraMusica::-moz-range-thumb {
+
+    width: 12px;
+    height: 12px;
+
+    border:
+        1px solid
+        rgba(255,120,170,0.55);
+
+    border-radius: 50%;
+
+    background:
+        #ff78aa;
+
+    box-shadow:
+        0 0 10px
+        rgba(255,120,170,0.30);
+
+}
+
+
+/* =========================
+   TEMPO
+========================= */
+
+.tempoMusica {
+
+    color:
+        rgba(255,255,255,0.58);
+
+    letter-spacing:
+        0.2px;
+
+}
+
+/* =========================
+   MÚSICA TOCANDO
+========================= */
+
+.itemMusica.musicaTocando {
+
+    border-bottom:
+        1px solid
+        rgba(255,120,170,0.35);
+
+    background:
+        rgba(255,120,170,0.035);
+
+    box-shadow:
+        0 0 20px
+        rgba(255,120,170,0.06);
+
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+
+}
+
+
+/* =========================
+   PLAY ENQUANTO TOCA
+========================= */
+
+.itemMusica.musicaTocando
+.botaoPlayMusica {
+
+    background:
+        rgba(255,120,170,0.30);
+
+    border-color:
+        rgba(255,120,170,0.35);
+
+    box-shadow:
+        0 0 14px
+        rgba(255,120,170,0.38);
+
+}
+
+
+/* =========================
+   NOME ENQUANTO TOCA
+========================= */
+
+.itemMusica.musicaTocando
+.nomeMusica {
+
+    color:
+        rgba(255,255,255,1);
+
+    text-shadow:
+        0 0 10px
+        rgba(255,120,170,0.25);
 
 }

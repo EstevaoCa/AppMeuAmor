@@ -526,3 +526,25 @@
 
 }
 
+/* =========================
+   MENSAGEM
+========================= */
+
+#listaDiario p {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color:
+        rgba(255, 255, 255, 0.7);
+
+    font-size: 21px;
+
+}

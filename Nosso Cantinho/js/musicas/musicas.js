@@ -19,6 +19,19 @@ const botaoVoltarMusicas =
 
 
 /* =========================
+   MÚSICA ATUAL
+========================= */
+
+let musicaTocando = null;
+
+let botaoMusicaTocando = null;
+
+let itemMusicaTocando = null;
+
+let musicaTocandoId = null;
+
+
+/* =========================
    ABRIR MÚSICAS
 ========================= */
 
@@ -36,7 +49,23 @@ abrirMusicas.addEventListener(
             "block";
 
         esconderBotoesSuperiores();
-        carregarMusicas();
+
+        /*
+         * Só carrega a lista novamente
+         * se ela ainda estiver vazia.
+         *
+         * Assim, quando voltamos para
+         * a tela, a música continua
+         * sendo a mesma.
+         */
+
+        if (
+            musicasSalvas.children.length === 0
+        ) {
+
+            carregarMusicas();
+
+        }
 
     }
 );
@@ -63,7 +92,7 @@ botaoVoltarMusicas.addEventListener(
 
 
 /* =========================
-   ELEMENTOS — ARQUIVOS DE MÚSICA
+   ELEMENTOS — ARQUIVOS
 ========================= */
 
 const inputMusica =
@@ -163,9 +192,6 @@ async function carregarMusicas() {
         return;
 
     }
-
-
-    let musicaTocando = null;
 
 
     musicas.forEach(
@@ -322,44 +348,143 @@ async function carregarMusicas() {
 
 
             /* =========================
-               PLAY / PAUSE
+               VERIFICAR SE É A
+               MÚSICA QUE ESTÁ TOCANDO
+            ========================= */
+
+            if (
+                musicaTocandoId === item.id
+            ) {
+
+                musicaTocando =
+                    musica;
+
+                botaoPlay.textContent =
+                    "⏸️";
+
+                itemMusica.classList.add(
+                    "musicaTocando"
+                );
+
+            }
+
+
+            /* =========================
+                PLAY / PAUSE
             ========================= */
 
             botaoPlay.addEventListener(
                 "click",
                 function () {
 
+                    /* =========================
+                    PAUSAR A MÚSICA ATUAL
+                    ========================= */
+
                     if (
-                        musica.paused
+                        musicaTocando &&
+                        musicaTocando !== musica
                     ) {
 
+                        musicaTocando.pause();
+
+
                         if (
-                            musicaTocando &&
-                            musicaTocando !== musica
+                            botaoMusicaTocando
                         ) {
 
-                            musicaTocando.pause();
+                            botaoMusicaTocando.textContent =
+                                "▶️";
 
                         }
 
 
-                        musica.play();
+                        if (
+                            itemMusicaTocando
+                        ) {
 
-                        musicaTocando =
-                            musica;
+                            itemMusicaTocando.classList.remove(
+                                "musicaTocando"
+                            );
 
-                        botaoPlay.textContent =
-                            "⏸️";
-
-                    }
-                    else {
-
-                        musica.pause();
-
-                        botaoPlay.textContent =
-                            "▶️";
+                        }
 
                     }
+
+
+                    /* =========================
+                    SE CLICOU NA MESMA MÚSICA
+                    ========================= */
+
+                    if (
+                        musicaTocando === musica
+                    ) {
+
+                        if (
+                            musica.paused
+                        ) {
+
+                            musica.play();
+
+                            botaoPlay.textContent =
+                                "⏸️";
+
+                            itemMusica.classList.add(
+                                "musicaTocando"
+                            );
+
+                        }
+                        else {
+
+                            musica.pause();
+
+                            botaoPlay.textContent =
+                                "▶️";
+
+                            itemMusica.classList.remove(
+                                "musicaTocando"
+                            );
+
+                            musicaTocando =
+                                null;
+
+                            botaoMusicaTocando =
+                                null;
+
+                            itemMusicaTocando =
+                                null;
+
+                        }
+
+                        return;
+
+                    }
+
+
+                    /* =========================
+                    INICIAR NOVA MÚSICA
+                    ========================= */
+
+                    musica.play();
+
+
+                    musicaTocando =
+                        musica;
+
+                    botaoMusicaTocando =
+                        botaoPlay;
+
+                    itemMusicaTocando =
+                        itemMusica;
+
+
+                    botaoPlay.textContent =
+                        "⏸️";
+
+
+                    itemMusica.classList.add(
+                        "musicaTocando"
+                    );
 
                 }
             );
@@ -434,14 +559,31 @@ async function carregarMusicas() {
                     botaoPlay.textContent =
                         "▶️";
 
+
+                    itemMusica.classList.remove(
+                        "musicaTocando"
+                    );
+
+
                     barra.value =
                         "0";
+
 
                     musica.currentTime =
                         0;
 
-                    musicaTocando =
-                        null;
+
+                    if (
+                        musicaTocando === musica
+                    ) {
+
+                        musicaTocando =
+                            null;
+
+                        musicaTocandoId =
+                            null;
+
+                    }
 
                 }
             );
@@ -475,6 +617,9 @@ async function carregarMusicas() {
                         musica.pause();
 
                         musicaTocando =
+                            null;
+
+                        musicaTocandoId =
                             null;
 
                     }
@@ -538,7 +683,7 @@ async function carregarMusicas() {
 
 
 /* =========================
-   FORMATAR TEMPO DA MÚSICA
+   FORMATAR TEMPO
 ========================= */
 
 function formatarTempoMusica(
