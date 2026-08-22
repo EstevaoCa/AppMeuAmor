@@ -1,5 +1,4 @@
 
-
 /* =========================
     MOSTRAR FRASE
 ========================= */
@@ -12,6 +11,18 @@ function mostrarFrase() {
     frase.classList.remove(
         "sumir"
     );
+
+    if (imagemBotaoApp) {
+        imagemBotaoApp.classList.remove(
+            "aparecer"
+        );
+    }
+
+    if (efeitoBotaoApp) {
+        efeitoBotaoApp.classList.remove(
+            "aparecer"
+        );
+    }
 
     frase.classList.add(
         "aparecer"
@@ -55,7 +66,7 @@ function mostrarFrase() {
 
 
 /* =========================
-    MOSTRAR BOTÃO
+   MOSTRAR BOTÃO E IMAGEM
 ========================= */
 
 function mostrarBotao() {
@@ -64,8 +75,27 @@ function mostrarBotao() {
         "visivel"
     );
 
-}
+    if (imagemBotaoApp) {
 
+        imagemBotaoApp.classList.add(
+            "aparecer"
+        );
+
+    }
+
+    const efeitoBotaoApp =
+        document.getElementById(
+            "efeitoBotaoApp"
+        );
+
+    if (efeitoBotaoApp) {
+
+        efeitoBotaoApp.classList.add(
+            "aparecer"
+        );
+
+    }
+}
 
 /* =========================
     INICIAR EXPERIÊNCIA

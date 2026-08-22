@@ -19,16 +19,14 @@ const botaoVoltarMusicas =
 
 
 /* =========================
-   MÚSICA ATUAL
+   ESTADO DO PLAYER
 ========================= */
 
 let musicaTocando = null;
 
-let botaoMusicaTocando = null;
+let idMusicaTocando = null;
 
-let itemMusicaTocando = null;
-
-let musicaTocandoId = null;
+let musicasCarregadas = false;
 
 
 /* =========================
@@ -50,18 +48,18 @@ abrirMusicas.addEventListener(
 
         esconderBotoesSuperiores();
 
+
         /*
-         * Só carrega a lista novamente
-         * se ela ainda estiver vazia.
+         * Só carrega as músicas
+         * quando a tela ainda não
+         * foi carregada.
          *
-         * Assim, quando voltamos para
-         * a tela, a música continua
-         * sendo a mesma.
+         * Assim o elemento audio
+         * continua existindo quando
+         * saímos e voltamos para a tela.
          */
 
-        if (
-            musicasSalvas.children.length === 0
-        ) {
+        if (!musicasCarregadas) {
 
             carregarMusicas();
 
@@ -150,6 +148,12 @@ inputMusica.addEventListener(
             inputMusica.value = "";
 
 
+            /*
+             * Aqui precisamos reconstruir
+             * a lista porque uma nova música
+             * foi adicionada.
+             */
+
             carregarMusicas();
 
         }
@@ -178,13 +182,41 @@ async function carregarMusicas() {
         );
 
 
+    /*
+     * Se estamos reconstruindo a lista
+     * e existe uma música tocando,
+     * guardamos a posição atual.
+     */
+
+    let idAnterior =
+        idMusicaTocando;
+
+    let tempoAnterior =
+        0;
+
+
+    if (musicaTocando) {
+
+        tempoAnterior =
+            musicaTocando.currentTime;
+
+        musicaTocando.pause();
+
+    }
+
+
+    musicaTocando = null;
+
+
     musicasSalvas.innerHTML = "";
 
 
     if (musicas.length === 0) {
 
+        musicasCarregadas = true;
+
         musicasSalvas.innerHTML = `
-            <p>
+            <p class="mensagemMusicas">
                 Ainda não temos músicas aqui. ❤️
             </p>
         `;
@@ -348,38 +380,48 @@ async function carregarMusicas() {
 
 
             /* =========================
-               VERIFICAR SE É A
-               MÚSICA QUE ESTÁ TOCANDO
-            ========================= */
-
-            if (
-                musicaTocandoId === item.id
-            ) {
-
-                musicaTocando =
-                    musica;
-
-                botaoPlay.textContent =
-                    "⏸️";
-
-                itemMusica.classList.add(
-                    "musicaTocando"
-                );
-
-            }
-
-
-            /* =========================
-                PLAY / PAUSE
+               PLAY / PAUSE
             ========================= */
 
             botaoPlay.addEventListener(
                 "click",
                 function () {
 
-                    /* =========================
-                    PAUSAR A MÚSICA ATUAL
-                    ========================= */
+                    /*
+                     * Se esta música já está tocando,
+                     * pausa.
+                     */
+
+                    if (
+                        musica ===
+                        musicaTocando &&
+                        !musica.paused
+                    ) {
+
+                        musica.pause();
+
+                        botaoPlay.textContent =
+                            "▶️";
+
+                        itemMusica.classList.remove(
+                            "musicaTocando"
+                        );
+
+                        musicaTocando =
+                            null;
+
+                        idMusicaTocando =
+                            null;
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Para qualquer outra música
+                     * que esteja tocando.
+                     */
 
                     if (
                         musicaTocando &&
@@ -389,81 +431,40 @@ async function carregarMusicas() {
                         musicaTocando.pause();
 
 
-                        if (
-                            botaoMusicaTocando
-                        ) {
-
-                            botaoMusicaTocando.textContent =
-                                "▶️";
-
-                        }
+                        const itemAnterior =
+                            document.querySelector(
+                                ".itemMusica.musicaTocando"
+                            );
 
 
-                        if (
-                            itemMusicaTocando
-                        ) {
+                        if (itemAnterior) {
 
-                            itemMusicaTocando.classList.remove(
+                            itemAnterior.classList.remove(
                                 "musicaTocando"
                             );
+
+
+                            const botaoAnterior =
+                                itemAnterior.querySelector(
+                                    ".botaoPlayMusica"
+                                );
+
+
+                            if (botaoAnterior) {
+
+                                botaoAnterior.textContent =
+                                    "▶️";
+
+                            }
 
                         }
 
                     }
 
 
-                    /* =========================
-                    SE CLICOU NA MESMA MÚSICA
-                    ========================= */
-
-                    if (
-                        musicaTocando === musica
-                    ) {
-
-                        if (
-                            musica.paused
-                        ) {
-
-                            musica.play();
-
-                            botaoPlay.textContent =
-                                "⏸️";
-
-                            itemMusica.classList.add(
-                                "musicaTocando"
-                            );
-
-                        }
-                        else {
-
-                            musica.pause();
-
-                            botaoPlay.textContent =
-                                "▶️";
-
-                            itemMusica.classList.remove(
-                                "musicaTocando"
-                            );
-
-                            musicaTocando =
-                                null;
-
-                            botaoMusicaTocando =
-                                null;
-
-                            itemMusicaTocando =
-                                null;
-
-                        }
-
-                        return;
-
-                    }
-
-
-                    /* =========================
-                    INICIAR NOVA MÚSICA
-                    ========================= */
+                    /*
+                     * Inicia a nova música.
+                     */
 
                     musica.play();
 
@@ -471,12 +472,47 @@ async function carregarMusicas() {
                     musicaTocando =
                         musica;
 
-                    botaoMusicaTocando =
-                        botaoPlay;
 
-                    itemMusicaTocando =
-                        itemMusica;
+                    idMusicaTocando =
+                        item.id;
 
+
+                    /*
+                     * Atualiza todos os botões.
+                     */
+
+                    document
+                        .querySelectorAll(
+                            ".botaoPlayMusica"
+                        )
+                        .forEach(
+                            function (botao) {
+
+                                botao.textContent =
+                                    "▶️";
+
+                            }
+                        );
+
+
+                    document
+                        .querySelectorAll(
+                            ".itemMusica"
+                        )
+                        .forEach(
+                            function (item) {
+
+                                item.classList.remove(
+                                    "musicaTocando"
+                                );
+
+                            }
+                        );
+
+
+                    /*
+                     * Destaca a música atual.
+                     */
 
                     botaoPlay.textContent =
                         "⏸️";
@@ -508,9 +544,47 @@ async function carregarMusicas() {
                             musica.duration
                         );
 
+
+                    /*
+                     * Se esta era a música
+                     * que estava tocando antes
+                     * da reconstrução da lista,
+                     * recupera a posição.
+                     */
+
+                    if (
+                        item.id ===
+                        idAnterior &&
+                        tempoAnterior > 0
+                    ) {
+
+                        musica.currentTime =
+                            tempoAnterior;
+
+                        musica.play();
+
+                        musicaTocando =
+                            musica;
+
+                        idMusicaTocando =
+                            item.id;
+
+                        botaoPlay.textContent =
+                            "⏸️";
+
+                        itemMusica.classList.add(
+                            "musicaTocando"
+                        );
+
+                    }
+
                 }
             );
 
+
+            /* =========================
+               ATUALIZAR BARRA
+            ========================= */
 
             musica.addEventListener(
                 "timeupdate",
@@ -574,13 +648,14 @@ async function carregarMusicas() {
 
 
                     if (
-                        musicaTocando === musica
+                        musicaTocando ===
+                        musica
                     ) {
 
                         musicaTocando =
                             null;
 
-                        musicaTocandoId =
+                        idMusicaTocando =
                             null;
 
                     }
@@ -611,7 +686,8 @@ async function carregarMusicas() {
 
 
                     if (
-                        musicaTocando === musica
+                        musicaTocando ===
+                        musica
                     ) {
 
                         musica.pause();
@@ -619,7 +695,7 @@ async function carregarMusicas() {
                         musicaTocando =
                             null;
 
-                        musicaTocandoId =
+                        idMusicaTocando =
                             null;
 
                     }
@@ -678,6 +754,10 @@ async function carregarMusicas() {
 
         }
     );
+
+
+    musicasCarregadas =
+        true;
 
 }
 

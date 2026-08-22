@@ -29,6 +29,15 @@ const botaoContinuarHistoria =
         "botaoContinuarHistoria"
     );
 
+const imagemBotaoApp =
+    document.getElementById(
+        "imagemBotaoApp"
+    );
+
+const efeitoBotaoApp =
+    document.getElementById(
+        "efeitoBotaoApp"
+    );
 
 /* =========================
    BOTÕES DE RETORNO
