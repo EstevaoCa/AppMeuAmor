@@ -467,4 +467,983 @@
     left: 50%;
     top: 50%;
 
-    margin
+    margin: 0;
+
+    transform:
+        translate(-50%, -50%);
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    z-index: 20;
+
+    box-shadow:
+
+        0 0 12px
+        rgba(255,0,35,0.45),
+
+        0 0 28px
+        rgba(255,0,35,0.30),
+
+        0 0 55px
+        rgba(255,0,35,0.16);
+
+}
+
+
+/* ==================================================
+   AURA
+================================================== */
+
+#efeitoBotaoApp::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+
+            rgba(255,0,35,0.25)
+            0%,
+
+            rgba(255,0,35,0.12)
+            35%,
+
+            rgba(255,0,35,0.04)
+            58%,
+
+            transparent
+            72%
+        );
+
+    filter:
+        blur(14px);
+
+    z-index: 2;
+
+    animation:
+
+        pulsarEnergia
+        3.8s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* ==================================================
+   NÚCLEO DE ENERGIA
+================================================== */
+
+.energiaCentral {
+
+    position: absolute;
+
+    width: 158px;
+    height: 158px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    background:
+
+        radial-gradient(
+            circle,
+
+            rgba(255,20,45,0.10)
+            0%,
+
+            rgba(255,0,35,0.05)
+            40%,
+
+            transparent
+            70%
+        );
+
+    box-shadow:
+
+        0 0 20px
+        rgba(255,0,40,0.22);
+
+    animation:
+
+        pulsarNucleo
+        3s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* ==================================================
+   RAIOS
+================================================== */
+
+.raio {
+
+    position: absolute;
+
+    display: block;
+
+    z-index: 8;
+
+    width: 165px;
+    height: 150px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+            135deg,
+
+            transparent 0%,
+            transparent 29%,
+
+            rgba(255,15,40,0.55) 31%,
+
+            rgba(255,70,90,0.95) 33%,
+
+            rgba(255,180,185,1) 35%,
+
+            rgba(255,45,65,0.9) 37%,
+
+            transparent 39%,
+
+            transparent 46%,
+
+            rgba(255,10,35,0.6) 48%,
+
+            rgba(255,100,115,1) 50%,
+
+            rgba(255,220,220,1) 51%,
+
+            rgba(255,40,60,0.9) 53%,
+
+            transparent 55%,
+
+            transparent 66%,
+
+            rgba(255,15,40,0.55) 68%,
+
+            rgba(255,90,105,0.95) 70%,
+
+            rgba(255,180,185,1) 72%,
+
+            rgba(255,20,45,0.75) 74%,
+
+            transparent 76%,
+
+            transparent 100%
+        );
+
+    clip-path:
+
+        polygon(
+
+            50% 0%,
+            64% 2%,
+
+            57% 14%,
+            50% 22%,
+
+            82% 22%,
+            91% 28%,
+
+            76% 34%,
+            48% 34%,
+
+            39% 44%,
+            30% 52%,
+
+            13% 52%,
+            7% 47%,
+
+            25% 42%,
+            38% 29%,
+
+            45% 20%,
+            52% 12%,
+
+            39% 52%,
+            31% 62%,
+
+            69% 62%,
+            80% 68%,
+
+            68% 74%,
+            42% 74%,
+
+            31% 100%,
+            38% 78%,
+
+            45% 67%,
+            55% 55%,
+
+            72% 48%,
+            88% 42%,
+
+            77% 54%,
+            62% 60%
+
+        );
+
+    filter:
+
+        drop-shadow(
+            0 0 2px
+            rgba(255,255,255,0.95)
+        )
+
+        drop-shadow(
+            0 0 5px
+            rgba(255,0,35,1)
+        )
+
+        drop-shadow(
+            0 0 12px
+            rgba(255,0,40,0.75)
+        )
+
+        drop-shadow(
+            0 0 24px
+            rgba(255,0,45,0.35)
+        );
+
+    animation:
+
+        descargaEletrica
+        10.4s
+        infinite;
+
+}
+
+
+/* ==================================================
+   POSIÇÃO DOS RAIOS
+================================================== */
+
+.raio1 {
+
+    top: -5px;
+    left: 78px;
+
+    transform:
+        rotate(-12deg)
+        scale(0.8);
+
+    animation-delay:
+        0.4s;
+
+}
+
+
+.raio2 {
+
+    top: 8px;
+    right: 28px;
+
+    transform:
+        rotate(42deg)
+        scale(0.65);
+
+    animation-delay:
+        2.7s;
+
+}
+
+
+.raio3 {
+
+    top: 72px;
+    right: -5px;
+
+    transform:
+        rotate(87deg)
+        scale(0.78);
+
+    animation-delay:
+        5.1s;
+
+}
+
+
+.raio4 {
+
+    bottom: 0;
+    right: 30px;
+
+    transform:
+        rotate(137deg)
+        scale(0.65);
+
+    animation-delay:
+        1.8s;
+
+}
+
+
+.raio5 {
+
+    bottom: -8px;
+    left: 82px;
+
+    transform:
+        rotate(178deg)
+        scale(0.75);
+
+    animation-delay:
+        4.2s;
+
+}
+
+
+.raio6 {
+
+    bottom: 8px;
+    left: 25px;
+
+    transform:
+        rotate(222deg)
+        scale(0.65);
+
+    animation-delay:
+        6.3s;
+
+}
+
+
+.raio7 {
+
+    top: 74px;
+    left: -5px;
+
+    transform:
+        rotate(270deg)
+        scale(0.8);
+
+    animation-delay:
+        3.4s;
+
+}
+
+
+.raio8 {
+
+    top: 12px;
+    left: 25px;
+
+    transform:
+        rotate(315deg)
+        scale(0.65);
+
+    animation-delay:
+        5.8s;
+
+}
+
+
+/* ==================================================
+   RAMIFICAÇÕES
+================================================== */
+
+.ramo {
+
+    position: absolute;
+
+    display: block;
+
+    width: 65px;
+    height: 75px;
+
+    z-index: 7;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+            55deg,
+
+            transparent 42%,
+
+            rgba(255,20,45,0.65) 45%,
+
+            rgba(255,100,110,0.82) 48%,
+
+            transparent 51%
+        );
+
+    filter:
+
+        drop-shadow(
+            0 0 4px
+            rgba(255,0,40,0.5)
+        );
+
+    clip-path:
+
+        polygon(
+
+            44% 0%,
+            57% 18%,
+
+            45% 30%,
+            72% 39%,
+
+            48% 50%,
+            64% 63%,
+
+            35% 58%,
+            23% 82%,
+
+            29% 51%,
+            8% 46%,
+
+            35% 36%,
+            28% 25%
+
+        );
+
+    animation:
+
+        ramoEletrico
+        9s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* ==================================================
+   POSIÇÃO DAS RAMIFICAÇÕES
+================================================== */
+
+.ramo1 {
+
+    top: 25px;
+    left: 58px;
+
+    transform:
+        rotate(-25deg)
+        scale(0.65);
+
+    animation-delay:
+        1.2s;
+
+}
+
+
+.ramo2 {
+
+    top: 54px;
+    right: 34px;
+
+    transform:
+        rotate(55deg)
+        scale(0.55);
+
+    animation-delay:
+        4.5s;
+
+}
+
+
+.ramo3 {
+
+    bottom: 30px;
+    right: 58px;
+
+    transform:
+        rotate(150deg)
+        scale(0.6);
+
+    animation-delay:
+        7.1s;
+
+}
+
+
+.ramo4 {
+
+    bottom: 42px;
+    left: 38px;
+
+    transform:
+        rotate(225deg)
+        scale(0.5);
+
+    animation-delay:
+        6.2s;
+
+}
+
+
+/* ==================================================
+   DESCARGA PRINCIPAL
+================================================== */
+
+@keyframes descargaEletrica {
+
+    0% {
+
+        opacity: 0;
+
+    }
+
+    12% {
+
+        opacity: 0;
+
+    }
+
+    13% {
+
+        opacity: 0.12;
+
+    }
+
+    13.5% {
+
+        opacity: 0.85;
+
+        filter:
+
+            drop-shadow(
+                0 0 4px
+                rgba(255,0,35,0.95)
+            )
+
+            drop-shadow(
+                0 0 13px
+                rgba(255,0,40,0.55)
+            );
+
+    }
+
+    14.2% {
+
+        opacity: 0.08;
+
+    }
+
+    15% {
+
+        opacity: 0.58;
+
+    }
+
+    15.8% {
+
+        opacity: 0;
+
+    }
+
+    16%,
+    58% {
+
+        opacity: 0;
+
+    }
+
+    59% {
+
+        opacity: 0.08;
+
+    }
+
+    59.5% {
+
+        opacity: 0.65;
+
+    }
+
+    60.2% {
+
+        opacity: 0.15;
+
+    }
+
+    61% {
+
+        opacity: 0.82;
+
+        filter:
+
+            drop-shadow(
+                0 0 3px
+                rgba(255,0,35,0.9)
+            )
+
+            drop-shadow(
+                0 0 11px
+                rgba(255,0,40,0.5)
+            );
+
+    }
+
+    61.8% {
+
+        opacity: 0.1;
+
+    }
+
+    62.5% {
+
+        opacity: 0;
+
+    }
+
+    63%,
+    100% {
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* ==================================================
+   RAMIFICAÇÕES
+================================================== */
+
+@keyframes ramoEletrico {
+
+    0%,
+    20% {
+
+        opacity: 0;
+
+    }
+
+    21% {
+
+        opacity: 0.35;
+
+    }
+
+    21.8% {
+
+        opacity: 0;
+
+    }
+
+    22%,
+    70% {
+
+        opacity: 0;
+
+    }
+
+    71% {
+
+        opacity: 0.22;
+
+    }
+
+    72% {
+
+        opacity: 0.5;
+
+    }
+
+    72.7% {
+
+        opacity: 0;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* ==================================================
+   PULSAÇÃO DA AURA
+================================================== */
+
+@keyframes pulsarEnergia {
+
+    0%,
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.94);
+
+        opacity: 0.28;
+
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.05);
+
+        opacity: 0.62;
+
+    }
+
+}
+
+
+/* ==================================================
+   PULSAÇÃO DO NÚCLEO
+================================================== */
+
+@keyframes pulsarNucleo {
+
+    0%,
+    100% {
+
+        opacity: 0.22;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.97);
+
+    }
+
+    50% {
+
+        opacity: 0.52;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.03);
+
+    }
+
+}
+
+
+/* ==================================================
+   BOTÃO INICIAL
+================================================== */
+
+#botaoIniciar {
+
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+
+}
+
+
+/* ==================================================
+   BOTÃO COMEÇAR
+================================================== */
+
+#botaoComecar {
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+/* ==================================================
+   RESPONSIVIDADE — CELULAR
+================================================== */
+
+@media (max-width: 600px) {
+
+    /* ----------------------------------------------
+       FRASE
+    ---------------------------------------------- */
+
+    .frase {
+
+        width: 90%;
+
+        min-height: 120px;
+
+        font-size:
+            clamp(
+                25px,
+                6.5vw,
+                42px
+            );
+
+        line-height: 1.3;
+
+    }
+
+
+    /* ----------------------------------------------
+       BOTÕES
+    ---------------------------------------------- */
+
+    #botaoEntrarDireto,
+    #botaoContinuarHistoria {
+
+        width: 90%;
+
+        max-width: 320px;
+
+        padding:
+            11px 20px;
+
+        font-size:
+            21px;
+
+    }
+
+
+    /* ----------------------------------------------
+       EFEITO CENTRAL
+    ---------------------------------------------- */
+
+    #efeitoBotaoApp {
+
+        width: 230px;
+        height: 230px;
+
+    }
+
+
+    /* ----------------------------------------------
+       IMAGEM
+    ---------------------------------------------- */
+
+    #imagemBotaoApp {
+
+        width: 150px;
+        height: 150px;
+
+    }
+
+
+    /* ----------------------------------------------
+       AURA
+    ---------------------------------------------- */
+
+    #efeitoBotaoApp::before {
+
+        width: 190px;
+        height: 190px;
+
+    }
+
+
+    /* ----------------------------------------------
+       NÚCLEO
+    ---------------------------------------------- */
+
+    .energiaCentral {
+
+        width: 158px;
+        height: 158px;
+
+    }
+
+
+    /* ----------------------------------------------
+       RAIOS
+    ---------------------------------------------- */
+
+    .raio {
+
+        width: 78px;
+        height: 120px;
+
+    }
+
+
+    /* ----------------------------------------------
+       RAMIFICAÇÕES
+    ---------------------------------------------- */
+
+    .ramo {
+
+        width: 55px;
+        height: 65px;
+
+    }
+
+}
+
+
+/* ==================================================
+   CELULARES MUITO PEQUENOS
+================================================== */
+
+@media (max-width: 380px) {
+
+    .frase {
+
+        width: 92%;
+
+        font-size:
+            clamp(
+                23px,
+                7vw,
+                36px
+            );
+
+    }
+
+
+    #efeitoBotaoApp {
+
+        width: 210px;
+        height: 210px;
+
+    }
+
+
+    #imagemBotaoApp {
+
+        width: 135px;
+        height: 135px;
+
+    }
+
+
+    #botaoEntrarDireto,
+    #botaoContinuarHistoria {
+
+        width: 88%;
+
+        font-size: 20px;
+
+    }
+
+}
