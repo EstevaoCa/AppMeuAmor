@@ -304,6 +304,9 @@
 /* ==================================================
    BOTÕES DE RETORNO
 ================================================== */
+#botaoEntrarDireto{
+    margin-top: 40px;
+}
 
 #botaoEntrarDireto,
 #botaoContinuarHistoria {
