@@ -305,11 +305,13 @@
    BOTÕES DE RETORNO
 ================================================== */
 
-
+#botaoEntrarDireto{
+    margin-top: 30px;
+}
 #botaoEntrarDireto,
 #botaoContinuarHistoria {
 
-    margin-top: 40px;
+    margin: 15px;
 
     margin-left: auto;
     margin-right: auto;
