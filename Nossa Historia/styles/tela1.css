@@ -443,33 +443,28 @@
 ================================================== */
 
 #imagemBotaoApp {
+    display: block;
 
-    position: relative;
+    position: absolute;
 
     width: 150px;
     height: 150px;
 
-    object-fit: cover;
+    left: 50%;
+    top: 50%;
 
+    transform: translate(-50%, -50%);
+
+    object-fit: cover;
     border-radius: 50%;
 
     z-index: 20;
 
     box-shadow:
-
-        0 0 12px
-        rgba(255,0,35,0.45),
-
-        0 0 28px
-        rgba(255,0,35,0.30),
-
-        0 0 55px
-        rgba(255,0,35,0.16);
-
-    transition:
-        transform 0.5s ease;
+        0 0 12px rgba(255,0,35,0.45),
+        0 0 28px rgba(255,0,35,0.30),
+        0 0 55px rgba(255,0,35,0.16);
 }
-
 
 /* ==================================================
    AURA
