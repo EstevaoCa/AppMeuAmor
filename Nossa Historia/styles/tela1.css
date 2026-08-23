@@ -405,33 +405,32 @@
    EFEITO CINEMATOGRÁFICO DO APLICATIVO
 ================================================== */
 
-#efeitoBotaoApp {
-
-    position: relative;
+ #efeitoBotaoApp {
+    position: absolute;
 
     width: 280px;
     height: 280px;
 
-    display: flex;
+    left: 50%;
+    top: 50%;
 
+    display: flex;
     align-items: center;
     justify-content: center;
 
-    margin: 18px auto;
+    margin: 0;
 
     opacity: 0;
 
     transform:
+        translate(-50%, -50%)
         scale(0.82);
 
     pointer-events: none;
 
     transition:
-
         opacity 1s ease,
-
-        transform 1s
-        cubic-bezier(
+        transform 1s cubic-bezier(
             0.22,
             1,
             0.36,
