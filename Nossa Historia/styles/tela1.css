@@ -304,14 +304,15 @@
 /* ==================================================
    BOTÕES DE RETORNO
 ================================================== */
-important#botaoEntrarDireto{
+#botaoEntrarDireto{
     margin-top: 80px;
+}
+#botaoContinuarHistoria {
+    margin-top: 15px;
 }
 
 #botaoEntrarDireto,
 #botaoContinuarHistoria {
-
-    margin-top: 15px;
 
     margin-left: auto;
     margin-right: auto;
