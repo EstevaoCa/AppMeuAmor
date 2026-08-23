@@ -306,13 +306,13 @@
 ================================================== */
 
 #botaoEntrarDireto{
-    margin-top: 80px;
+    margin-top: 40px;
 }
 
 #botaoEntrarDireto,
 #botaoContinuarHistoria {
 
-    margin-top: 15px;
+    margin: 10px;
 
     margin-left: auto;
     margin-right: auto;
