@@ -1290,3 +1290,93 @@
     }
 }
 
+/* ==================================================
+   CENTRALIZAÇÃO DA TELA DE SUSPENSE
+================================================== */
+
+#telaSuspense {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+
+/* CONTEÚDO CENTRAL */
+
+.conteudoSuspense {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    margin: 0 auto;
+}
+
+
+/* GARANTE QUE O EFEITO FIQUE NO CENTRO */
+
+#efeitoBotaoApp {
+    position: relative;
+
+    flex-shrink: 0;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* IMAGEM SEM DESLOCAMENTO */
+
+#imagemBotaoApp {
+    display: block;
+
+    margin: 0;
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+
+/* BOTÃO INICIAL */
+
+#botaoIniciar {
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+}
+
+
+/* FRASE */
+
+#frase {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* BOTÕES INFERIORES */
+
+#botaoComecar,
+#botaoEntrarDireto,
+#botaoContinuarHistoria {
+    margin-left: auto;
+    margin-right: auto;
+}
+
