@@ -26,14 +26,422 @@
 
 <body>
     <audio
-    id="musicaApp"
-    src="/Nossa Historia/musica/musica_fundo.mp3"
-    loop
-    preload="auto"
-></audio>
+        id="musicaApp"
+        src="/Nossa Historia/musica/musica_fundo.mp3"
+        loop
+        preload="auto"
+    ></audio>
     <div id="estrelasApp"></div>
+
+    <section
+        id="telaEditorHistoria"
+        class="telaApp telaEditorHistoria"
+    >
+
+        <div class="cabecalhoEditorHistoria">
+
+            <button
+                id="botaoVoltarEditorHistoria"
+                class="botaoVoltarApp"
+            >
+                ←
+            </button>
+
+            <h2>
+                Editar história ❤️
+            </h2>
+
+        </div>
+
+
+        <!-- =========================
+            CARROSSEL DO EDITOR
+        ========================== -->
+
+        <div
+            id="carrosselEditorHistoria"
+            class="carrosselEditorHistoria"
+        >
+
+            <!-- =========================
+                TELA 1
+            ========================== -->
+
+            <div class="telaEditorHistoriaItem">
+
+                <div class="blocoEditorHistoria">
+
+                    <h3>
+                        📸 Primeira lembrança
+                    </h3>
+
+                    <label>
+                        Foto
+                    </label>
+
+                    <input
+                        type="file"
+                        id="editarFoto1"
+                        accept="image/*"
+                    >
+
+                    <label>
+                        Mensagem
+                    </label>
+
+                    <textarea
+                        id="editarMensagemFoto"
+                        rows="7"
+                        maxlength="220"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                TELA 2
+            ========================== -->
+
+            <div class="telaEditorHistoriaItem">
+
+                <div class="blocoEditorHistoria">
+
+                    <h3>
+                        💭 Memória
+                    </h3>
+
+                    <label>
+                        Pergunta
+                    </label>
+
+                    <textarea
+                        id="editarPerguntaMemoria"
+                        rows="4"
+                        maxlength="120"
+                    ></textarea>
+
+
+                    <label>
+                        Foto
+                    </label>
+
+                    <input
+                        type="file"
+                        id="editarFoto2"
+                        accept="image/*"
+                    >
+
+
+                    <label>
+                        Primeira mensagem
+                    </label>
+
+                    <textarea
+                        id="editarMensagemMemoria1"
+                        rows="4"
+                        maxlength="100"
+                    ></textarea>
+
+
+                    <label>
+                        Segunda mensagem
+                    </label>
+
+                    <textarea
+                        id="editarMensagemMemoria2"
+                        rows="5"
+                        maxlength="220"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                TELA 3
+            ========================== -->
+
+            <div class="telaEditorHistoriaItem">
+
+                <div class="blocoEditorHistoria">
+
+                    <h3>
+                        🎬 Textos do vídeo
+                    </h3>
+
+                    <label>
+                        Texto 1
+                    </label>
+
+                    <textarea
+                        id="editarTextoVideo1"
+                        rows="5"
+                        maxlength="180"
+                    ></textarea>
+
+
+                    <label>
+                        Texto 2
+                    </label>
+
+                    <textarea
+                        id="editarTextoVideo2"
+                        rows="5"
+                        maxlength="180"
+                    ></textarea>
+
+
+                    <label>
+                        Texto 3
+                    </label>
+
+                    <textarea
+                        id="editarTextoVideo3"
+                        rows="5"
+                        maxlength="180"
+                    ></textarea>
+
+
+                    <label>
+                        Texto 4
+                    </label>
+
+                    <textarea
+                        id="editarTextoVideo4"
+                        rows="5"
+                        maxlength="180"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                TELA 4
+            ========================== -->
+
+            <div class="telaEditorHistoriaItem">
+
+                <div class="blocoEditorHistoria">
+
+                    <h3>
+                        🖼️ Mural de fotos
+                    </h3>
+
+                    <label>
+                        Foto 3
+                    </label>
+
+                    <input
+                        type="file"
+                        id="editarFoto3"
+                        accept="image/*"
+                    >
+
+
+                    <label>
+                        Foto 4
+                    </label>
+
+                    <input
+                        type="file"
+                        id="editarFoto4"
+                        accept="image/*"
+                    >
+
+
+                    <label>
+                        Foto 5
+                    </label>
+
+                    <input
+                        type="file"
+                        id="editarFoto5"
+                        accept="image/*"
+                    >
+
+
+                    <label>
+                        Foto 6
+                    </label>
+
+                    <input
+                        type="file"
+                        id="editarFoto6"
+                        accept="image/*"
+                    >
+
+
+                    <label>
+                        Foto 7
+                    </label>
+
+                    <input
+                        type="file"
+                        id="editarFoto7"
+                        accept="image/*"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                TELA 5
+            ========================== -->
+
+            <div class="telaEditorHistoriaItem">
+
+                <div class="blocoEditorHistoria">
+
+                    <h3>
+                        ❤️ Final da história
+                    </h3>
+
+
+                    <label>
+                        Foto
+                    </label>
+
+                    <input
+                        type="file"
+                        id="editarFoto8"
+                        accept="image/*"
+                    >
+
+
+                    <label>
+                        Texto principal
+                    </label>
+
+                    <textarea
+                        id="editarTextoAmor"
+                        rows="4"
+                        maxlength="100"
+                    ></textarea>
+
+
+                    <label>
+                        Mensagem do aplicativo
+                    </label>
+
+                    <textarea
+                        id="editarMensagemApp"
+                        rows="6"
+                        maxlength="180"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                TELA 6 — SALVAR
+            ========================== -->
+
+            <div class="telaEditorHistoriaItem telaSalvarHistoria">
+
+                <div class="blocoEditorHistoria">
+
+                    <h3>
+                        💾 Salvar história
+                    </h3>
+
+                    <p class="textoSalvarHistoria">
+
+                        Quando terminar de editar,
+                        salve suas alterações para
+                        atualizar a sua história. ❤️
+
+                    </p>
+
+
+                    <div class="botoesEditorHistoria">
+
+                        <button
+                            id="botaoSalvarHistoria"
+                            class="botaoSalvarHistoria"
+                        >
+                            💾 Salvar alterações
+                        </button>
+
+                        <button
+                            type="button"
+                            id="botaoPadraoHistoria"
+                            class="botaoPadraoHistoria"
+                        >
+                            Padrão
+                        </button>
+
+
+                        <button
+                            id="botaoCancelarEdicaoHistoria"
+                            class="botaoCancelarEdicaoHistoria"
+                        >
+                            Cancelar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+            INDICADORES
+        ========================== -->
+
+        <div
+            id="indicadoresEditorHistoria"
+            class="indicadoresEditorHistoria"
+        >
+
+            <span
+                class="indicadorEditor ativo"
+                data-tela="0"
+            ></span>
+
+            <span
+                class="indicadorEditor"
+                data-tela="1"
+            ></span>
+
+            <span
+                class="indicadorEditor"
+                data-tela="2"
+            ></span>
+
+            <span
+                class="indicadorEditor"
+                data-tela="3"
+            ></span>
+
+            <span
+                class="indicadorEditor"
+                data-tela="4"
+            ></span>
+
+            <span
+                class="indicadorEditor"
+                data-tela="5"
+            ></span>
+
+        </div>
+
+    </section>
+
+
     <main id="app">
-       <div class="botoesSuperioresApp">
+        <div class="botoesSuperioresApp">
 
             <button
                 id="botaoMenu"
@@ -69,6 +477,15 @@
             >
                 ⚙️
                 <span>Configurações</span>
+            </button>
+
+
+            <button
+                id="botaoEditarHistoria"
+                class="itemMenuSuperior"
+            >
+                ✏️
+                <span>Editar história</span>
             </button>
 
 
@@ -220,8 +637,8 @@
 
         </section>
 
-                <!-- =========================
-             TELA DE VÍDEOS
+        <!-- =========================
+            TELA DE VÍDEOS
         ========================== -->
 
         <section
@@ -464,7 +881,6 @@
             </div>
 
         </section>
-
     </main>
 
     <script src="js/banco/banco.js"></script>
@@ -473,6 +889,7 @@
     <script src="js/diario/diario.js"></script>
     <script src="js/fotos/fotos.js"></script>
     <script src="js/app.js"></script>
+    <script src="../Nossa Historia/Js/editor.js"></script>
 
 </body>
 

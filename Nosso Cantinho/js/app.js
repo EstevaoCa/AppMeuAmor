@@ -1,319 +1,398 @@
 
-/* =========================
-   TESTE DO ARMAZENAMENTO
-========================= */
-
-window.salvarArquivo =
-    salvarArquivo;
-
-window.buscarArquivos =
-    buscarArquivos;
-
-window.buscarArquivo =
-    buscarArquivo;
-
-window.excluirArquivo =
-    excluirArquivo;
-
-/* =========================
-   GARANTIR ENTRADA NA TELA INICIAL
-========================= */
-
-const parametrosApp =
-    new URLSearchParams(
-        window.location.search
-    );
+/* ==================================================
+   NOSSO CANTINHO ❤️
+   APP.JS — CONTROLE GERAL DO APLICATIVO
+================================================== */
 
 
-if (
-    parametrosApp.get("inicio") === "1"
-) {
+/* ==================================================
+   GARANTIR QUE O DOM ESTEJA CARREGADO
+================================================== */
 
-    telaInicioApp.style.display =
-        "flex";
-
-    telaVideos.style.display =
-        "none";
-
-    telaMusicas.style.display =
-        "none";
-
-    telaDiario.style.display =
-        "none";
-
-    telaFotosApp.style.display =
-        "none";
-
-}
-
-/* =========================
-   BOTÕES SUPERIORES DO APP
-========================= */
-
-const botaoInicio =
-    document.getElementById(
-        "botaoInicio"
-    );
-
-const botaoSair =
-    document.getElementById(
-        "botaoSair"
-    );
+document.addEventListener("DOMContentLoaded", function () {
 
 
+    /* ==================================================
+       ELEMENTOS PRINCIPAIS DAS TELAS
+    ================================================== */
+
+    const telaInicioApp =
+        document.getElementById("telaInicioApp");
+
+    const telaVideos =
+        document.getElementById("telaVideos");
+
+    const telaMusicas =
+        document.getElementById("telaMusicas");
+
+    const telaDiario =
+        document.getElementById("telaDiario");
+
+    const telaFotosApp =
+        document.getElementById("telaFotosApp");
 
 
-/* =========================
-   MENU SUPERIOR
-========================= */
+    /* ==================================================
+       BOTÕES SUPERIORES
+    ================================================== */
 
-const botaoMenu =
-    document.getElementById(
-        "botaoMenu"
-    );
+    const botaoInicio =
+        document.getElementById("botaoInicio");
 
-const menuSuperiorApp =
-    document.getElementById(
-        "menuSuperiorApp"
-    );
+    const botaoSair =
+        document.getElementById("botaoSair");
 
-const botaoConfiguracoes =
-    document.getElementById(
-        "botaoConfiguracoes"
-    );
-
-const painelConfiguracoes =
-    document.getElementById(
-        "painelConfiguracoes"
-    );
-
-const botaoFecharConfiguracoes =
-    document.getElementById(
-        "botaoFecharConfiguracoes"
-    );
-
-const botaoMusicaApp =
-    document.getElementById(
-        "botaoMusicaApp"
-    );
+    const botaoMenu =
+        document.getElementById("botaoMenu");
 
 
-function mostrarBotoesSuperiores() {
+    /* ==================================================
+       MENU SUPERIOR
+    ================================================== */
 
-    botaoMenu.style.display =
-        "block";
+    const menuSuperiorApp =
+        document.getElementById("menuSuperiorApp");
 
-}
+    const botaoConfiguracoes =
+        document.getElementById("botaoConfiguracoes");
 
 
-function esconderBotoesSuperiores() {
+    /* ==================================================
+       PAINEL DE CONFIGURAÇÕES
+    ================================================== */
 
-    botaoMenu.style.display =
-        "none";
+    const painelConfiguracoes =
+        document.getElementById("painelConfiguracoes");
 
-    menuSuperiorApp.classList.remove(
-        "aberto"
-    );
-
-    painelConfiguracoes.classList.remove(
-        "aberto"
-    );
-
-}
-
-/* =========================
-   ☰ ABRIR / FECHAR MENU
-========================= */
-
-botaoMenu.addEventListener(
-    "click",
-    function () {
-
-        menuSuperiorApp.classList.toggle(
-            "aberto"
+    const botaoFecharConfiguracoes =
+        document.getElementById(
+            "botaoFecharConfiguracoes"
         );
 
+
+    /* ==================================================
+       MÚSICA
+    ================================================== */
+
+    const musicaApp =
+        document.getElementById("musicaApp");
+
+    const botaoMusicaApp =
+        document.getElementById("botaoMusicaApp");
+
+
+    /* ==================================================
+       EDITOR DA HISTÓRIA
+    ================================================== */
+
+    const botaoEditarHistoria =
+        document.getElementById(
+            "botaoEditarHistoria"
+        );
+
+    const telaEditorHistoria =
+        document.getElementById(
+            "telaEditorHistoria"
+        );
+
+    const botaoVoltarEditorHistoria =
+        document.getElementById(
+            "botaoVoltarEditorHistoria"
+        );
+
+    const botaoCancelarEdicaoHistoria =
+        document.getElementById(
+            "botaoCancelarEdicaoHistoria"
+        );
+    
+    const botaoPadraoHistoria =
+        document.getElementById(
+            "botaoPadraoHistoria"
+        );
+
+
+    /* ==================================================
+       CARROSSEL DO EDITOR
+    ================================================== */
+
+    const carrosselEditorHistoria =
+        document.getElementById(
+            "carrosselEditorHistoria"
+        );
+
+    const indicadoresEditorHistoria =
+        document.querySelectorAll(
+            ".indicadorEditor"
+        );
+
+
+    /* ==================================================
+       GARANTIR ENTRADA NA TELA INICIAL
+    ================================================== */
+
+    const parametrosApp =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    if (
+        parametrosApp.get("inicio") === "1"
+    ) {
+
+        if (telaInicioApp) {
+            telaInicioApp.style.display = "flex";
+        }
+
+        if (telaVideos) {
+            telaVideos.style.display = "none";
+        }
+
+        if (telaMusicas) {
+            telaMusicas.style.display = "none";
+        }
+
+        if (telaDiario) {
+            telaDiario.style.display = "none";
+        }
+
+        if (telaFotosApp) {
+            telaFotosApp.style.display = "none";
+        }
+
+        if (telaEditorHistoria) {
+            telaEditorHistoria.style.display = "none";
+        }
     }
-);
 
 
-/* =========================
-   ⚙️ CONFIGURAÇÕES
-========================= */
+    /* ==================================================
+       MOSTRAR BOTÃO DO MENU
+    ================================================== */
 
-botaoConfiguracoes.addEventListener(
-    "click",
-    function () {
+    function mostrarBotoesSuperiores() {
 
-        menuSuperiorApp.classList.remove(
-            "aberto"
-        );
+        if (!botaoMenu) {
+            return;
+        }
 
-        painelConfiguracoes.classList.add(
-            "aberto"
-        );
-
+        botaoMenu.style.display = "flex";
     }
-);
 
 
-/* =========================
-   FECHAR CONFIGURAÇÕES
-========================= */
+    /* ==================================================
+       ESCONDER BOTÃO DO MENU
+    ================================================== */
 
-botaoFecharConfiguracoes.addEventListener(
-    "click",
-    function () {
+    function esconderBotoesSuperiores() {
 
-        painelConfiguracoes.classList.remove(
-            "aberto"
-        );
+        if (botaoMenu) {
+            botaoMenu.style.display = "none";
+        }
 
-    }
-);
-
-/* =========================
-   FECHAR AO CLICAR FORA
-========================= */
-
-document.addEventListener(
-    "click",
-    function (evento) {
-
-        if (
-            menuSuperiorApp.classList.contains("aberto") &&
-            !menuSuperiorApp.contains(evento.target) &&
-            !botaoMenu.contains(evento.target)
-        ) {
-
+        if (menuSuperiorApp) {
             menuSuperiorApp.classList.remove(
                 "aberto"
             );
-
         }
 
-
-        if (
-            painelConfiguracoes.classList.contains("aberto") &&
-            !painelConfiguracoes.contains(evento.target) &&
-            !botaoConfiguracoes.contains(evento.target)
-        ) {
-
+        if (painelConfiguracoes) {
             painelConfiguracoes.classList.remove(
                 "aberto"
             );
-
         }
-
     }
-);
 
-/* =========================
-   🏠 VOLTAR PARA O INDEX PRINCIPAL
-========================= */
 
-botaoInicio.addEventListener(
-    "click",
-    function () {
+    /* ==================================================
+       ☰ ABRIR / FECHAR MENU
+    ================================================== */
 
-        window.location.href =
-            "../index.html";
+    if (
+        botaoMenu &&
+        menuSuperiorApp
+    ) {
 
+        botaoMenu.addEventListener(
+            "click",
+            function (evento) {
+
+                evento.stopPropagation();
+
+                menuSuperiorApp.classList.toggle(
+                    "aberto"
+                );
+            }
+        );
     }
-);
 
 
-/* =========================
-   🚪 SAIR SOMENTE DO APP
-========================= */
+    /* ==================================================
+       ⚙️ ABRIR CONFIGURAÇÕES
+    ================================================== */
 
-botaoSair.addEventListener(
-    "click",
-    function () {
+    if (
+        botaoConfiguracoes &&
+        menuSuperiorApp &&
+        painelConfiguracoes
+    ) {
 
-        const confirmar =
-            confirm(
-                "Deseja sair do nosso cantinho? ❤️"
-            );
+        botaoConfiguracoes.addEventListener(
+            "click",
+            function () {
+
+                menuSuperiorApp.classList.remove(
+                    "aberto"
+                );
+
+                painelConfiguracoes.classList.add(
+                    "aberto"
+                );
+            }
+        );
+    }
 
 
-        if (!confirmar) {
+    /* ==================================================
+       FECHAR CONFIGURAÇÕES
+    ================================================== */
 
+    if (
+        botaoFecharConfiguracoes &&
+        painelConfiguracoes
+    ) {
+
+        botaoFecharConfiguracoes.addEventListener(
+            "click",
+            function () {
+
+                painelConfiguracoes.classList.remove(
+                    "aberto"
+                );
+            }
+        );
+    }
+
+
+    /* ==================================================
+       FECHAR MENU / CONFIGURAÇÕES AO CLICAR FORA
+    ================================================== */
+
+    document.addEventListener(
+        "click",
+        function (evento) {
+
+            if (
+                menuSuperiorApp &&
+                botaoMenu &&
+                menuSuperiorApp.classList.contains(
+                    "aberto"
+                ) &&
+                !menuSuperiorApp.contains(
+                    evento.target
+                ) &&
+                !botaoMenu.contains(
+                    evento.target
+                )
+            ) {
+
+                menuSuperiorApp.classList.remove(
+                    "aberto"
+                );
+            }
+
+
+            if (
+                painelConfiguracoes &&
+                botaoConfiguracoes &&
+                painelConfiguracoes.classList.contains(
+                    "aberto"
+                ) &&
+                !painelConfiguracoes.contains(
+                    evento.target
+                ) &&
+                !botaoConfiguracoes.contains(
+                    evento.target
+                )
+            ) {
+
+                painelConfiguracoes.classList.remove(
+                    "aberto"
+                );
+            }
+        }
+    );
+
+
+    /* ==================================================
+       🏠 VOLTAR PARA O INDEX PRINCIPAL
+    ================================================== */
+
+    if (botaoInicio) {
+
+        botaoInicio.addEventListener(
+            "click",
+            function () {
+
+                window.location.href =
+                    "../index.html";
+            }
+        );
+    }
+
+
+    /* ==================================================
+       🚪 SAIR SOMENTE DO APP
+    ================================================== */
+
+    if (botaoSair) {
+
+        botaoSair.addEventListener(
+            "click",
+            function () {
+
+                const confirmar =
+                    window.confirm(
+                        "Deseja sair do nosso cantinho? ❤️"
+                    );
+
+                if (!confirmar) {
+                    return;
+                }
+
+                window.location.href =
+                    "about:blank";
+            }
+        );
+    }
+
+
+    /* ==================================================
+       🎵 MÚSICA DE FUNDO
+    ================================================== */
+
+    const musicaAtiva =
+        localStorage.getItem(
+            "musicaAppAtiva"
+        );
+
+
+    /* ==================================================
+       ATUALIZAR BOTÃO DA MÚSICA
+    ================================================== */
+
+    function atualizarBotaoMusica() {
+
+        if (!botaoMusicaApp) {
             return;
-
         }
 
-
-        window.location.href =
-            "about:blank";
-
-    }
-);
-
-/* =========================
-   MÚSICA DE FUNDO DO APP ❤️
-========================= */
-
-const musicaApp =
-    document.getElementById(
-        "musicaApp"
-    );
-
-const musicaAtiva =
-    localStorage.getItem(
-        "musicaAppAtiva"
-    );
-
-
-if (
-    musicaAtiva === "false"
-) {
-
-    botaoMusicaApp.textContent =
-        "OFF";
-
-    botaoMusicaApp.classList.remove(
-        "ativo"
-    );
-
-}
-
-/* =========================
-   🎵 ATIVAR / DESATIVAR MÚSICA
-========================= */
-
-botaoMusicaApp.addEventListener(
-    "click",
-    function () {
-
-        const estaAtiva =
+        const ativa =
             localStorage.getItem(
                 "musicaAppAtiva"
             ) !== "false";
 
 
-        if (estaAtiva) {
-
-            musicaApp.pause();
-
-            localStorage.setItem(
-                "musicaAppAtiva",
-                "false"
-            );
-
-            botaoMusicaApp.textContent =
-                "OFF";
-
-            botaoMusicaApp.classList.remove(
-                "ativo"
-            );
-
-        } else {
-
-            localStorage.setItem(
-                "musicaAppAtiva",
-                "true"
-            );
+        if (ativa) {
 
             botaoMusicaApp.textContent =
                 "ON";
@@ -322,74 +401,491 @@ botaoMusicaApp.addEventListener(
                 "ativo"
             );
 
-            iniciarMusicaApp();
+        } else {
 
+            botaoMusicaApp.textContent =
+                "OFF";
+
+            botaoMusicaApp.classList.remove(
+                "ativo"
+            );
+        }
+    }
+
+
+    /* ==================================================
+       ESTADO INICIAL DA MÚSICA
+    ================================================== */
+
+    if (
+        musicaAtiva === null
+    ) {
+
+        localStorage.setItem(
+            "musicaAppAtiva",
+            "true"
+        );
+    }
+
+
+    atualizarBotaoMusica();
+
+
+    /* ==================================================
+       VOLUME
+    ================================================== */
+
+    if (musicaApp) {
+        musicaApp.volume = 0.35;
+    }
+
+
+    /* ==================================================
+       🎵 INICIAR MÚSICA
+    ================================================== */
+
+    function iniciarMusicaApp() {
+
+        if (!musicaApp) {
+            return;
         }
 
-    }
-);
-
-
-/* =========================
-   VOLUME
-========================= */
-
-musicaApp.volume = 0.35;
-
-
-/* =========================
-   INICIAR MÚSICA
-========================= */
-
-function iniciarMusicaApp() {
-
-    if (!musicaApp) {
-
-        return;
-
-    }
-
-
-    musicaApp.play()
-        .then(
-            function () {
+        musicaApp.play()
+            .then(function () {
 
                 console.log(
                     "Música do Nosso Cantinho iniciada ❤️"
                 );
 
-            }
-        )
-        .catch(
-            function (erro) {
+            })
+            .catch(function () {
 
                 console.log(
                     "O navegador bloqueou o início automático da música."
                 );
+            });
+    }
+
+
+    /* ==================================================
+       🎵 ATIVAR / DESATIVAR MÚSICA
+    ================================================== */
+
+    if (botaoMusicaApp) {
+
+        botaoMusicaApp.addEventListener(
+            "click",
+            function () {
+
+                const estaAtiva =
+                    localStorage.getItem(
+                        "musicaAppAtiva"
+                    ) !== "false";
+
+
+                if (estaAtiva) {
+
+                    if (musicaApp) {
+                        musicaApp.pause();
+                    }
+
+                    localStorage.setItem(
+                        "musicaAppAtiva",
+                        "false"
+                    );
+
+                } else {
+
+                    localStorage.setItem(
+                        "musicaAppAtiva",
+                        "true"
+                    );
+
+                    iniciarMusicaApp();
+                }
+
+
+                atualizarBotaoMusica();
+            }
+        );
+    }
+
+
+    /* ==================================================
+       🎵 INICIAR MÚSICA AO ENTRAR NO APP
+    ================================================== */
+
+    if (
+        sessionStorage.getItem(
+            "iniciarMusicaApp"
+        ) === "true" &&
+        localStorage.getItem(
+            "musicaAppAtiva"
+        ) !== "false"
+    ) {
+
+        iniciarMusicaApp();
+
+        sessionStorage.removeItem(
+            "iniciarMusicaApp"
+        );
+    }
+
+
+    /* ==================================================
+       ✏️ ABRIR EDITOR DA HISTÓRIA
+    ================================================== */
+
+    if (
+        botaoEditarHistoria &&
+        telaEditorHistoria
+    ) {
+
+        botaoEditarHistoria.addEventListener(
+            "click",
+            function () {
+
+                if (painelConfiguracoes) {
+                    painelConfiguracoes.classList.remove(
+                        "aberto"
+                    );
+                }
+
+                if (menuSuperiorApp) {
+                    menuSuperiorApp.classList.remove(
+                        "aberto"
+                    );
+                }
+
+                esconderBotoesSuperiores();
+
+
+                if (telaInicioApp) {
+                    telaInicioApp.style.display =
+                        "none";
+                }
+
+
+                telaEditorHistoria.style.display =
+                    "block";
+
+
+                setTimeout(
+                    iniciarEditorHistoria,
+                    50
+                );
+            }
+        );
+    }
+
+
+    /* ==================================================
+       ❤️ FECHAR EDITOR DA HISTÓRIA
+    ================================================== */
+
+    function fecharEditorHistoria() {
+
+        if (!telaEditorHistoria) {
+            return;
+        }
+
+        telaEditorHistoria.style.display =
+            "none";
+
+
+        if (telaInicioApp) {
+            telaInicioApp.style.display =
+                "flex";
+        }
+
+
+        mostrarBotoesSuperiores();
+    }
+
+    /* ==================================================
+    PADRÃO DA HISTÓRIA
+    ================================================== */
+
+    let valoresPadraoHistoria = [];
+
+
+    function guardarValoresPadraoHistoria() {
+
+        if (!telaEditorHistoria) {
+            return;
+        }
+
+        const campos =
+            telaEditorHistoria.querySelectorAll(
+                "input, textarea"
+            );
+
+        valoresPadraoHistoria =
+            Array.from(campos).map(
+                function (campo) {
+
+                    return {
+                        elemento: campo,
+                        valor: campo.value
+                    };
+
+                }
+            );
+    }
+    guardarValoresPadraoHistoria();
+
+
+    /* ==================================================
+    RESTAURAR HISTÓRIA PARA O PADRÃO
+    ================================================== */
+
+    function restaurarPadraoHistoria() {
+
+        if (!valoresPadraoHistoria.length) {
+            return;
+        }
+
+        const confirmar =
+            window.confirm(
+                "Deseja voltar a história para o padrão? ❤️"
+            );
+
+        if (!confirmar) {
+            return;
+        }
+
+        valoresPadraoHistoria.forEach(
+            function (item) {
+
+                item.elemento.value =
+                    item.valor;
 
             }
         );
 
-}
+        localStorage.removeItem(
+            "historiaPersonalizada"
+        );
+    }
 
 
-/* =========================
-   INICIAR MÚSICA AO ENTRAR NO APP
-========================= */
+    /* ==================================================
+       BOTÃO VOLTAR DO EDITOR
+    ================================================== */
 
-if (
-    sessionStorage.getItem(
-        "iniciarMusicaApp"
-    ) === "true" &&
-    localStorage.getItem(
-        "musicaAppAtiva"
-    ) !== "false"
-) {
+    if (botaoVoltarEditorHistoria) {
 
-    iniciarMusicaApp();
+        botaoVoltarEditorHistoria.addEventListener(
+            "click",
+            fecharEditorHistoria
+        );
+    }
 
-    sessionStorage.removeItem(
-        "iniciarMusicaApp"
+
+    /* ==================================================
+       BOTÃO CANCELAR DO EDITOR
+    ================================================== */
+
+    if (botaoCancelarEdicaoHistoria) {
+
+        botaoCancelarEdicaoHistoria.addEventListener(
+            "click",
+            fecharEditorHistoria
+        );
+    }
+
+    /* ==================================================
+    BOTÃO PADRÃO DA HISTÓRIA
+    ================================================== */
+
+    if (botaoPadraoHistoria) {
+
+        botaoPadraoHistoria.addEventListener(
+            "click",
+            function () {
+
+                restaurarPadraoHistoria();
+
+            }
+        );
+    }
+
+
+    /* ==================================================
+       ATUALIZAR INDICADOR DO CARROSSEL
+    ================================================== */
+
+    function atualizarIndicadorHistoria() {
+
+        if (
+            !carrosselEditorHistoria ||
+            !indicadoresEditorHistoria.length
+        ) {
+            return;
+        }
+
+
+        const larguraTela =
+            carrosselEditorHistoria.clientWidth;
+
+
+        if (!larguraTela) {
+            return;
+        }
+
+
+        const indice =
+            Math.round(
+                carrosselEditorHistoria.scrollLeft /
+                larguraTela
+            );
+
+
+        indicadoresEditorHistoria.forEach(
+            function (indicador, i) {
+
+                indicador.classList.toggle(
+                    "ativo",
+                    i === indice
+                );
+            }
+        );
+    }
+
+
+    /* ==================================================
+       DETECTAR DESLIZE DO CARROSSEL
+    ================================================== */
+
+    if (carrosselEditorHistoria) {
+
+        carrosselEditorHistoria.addEventListener(
+            "scroll",
+            atualizarIndicadorHistoria
+        );
+    }
+
+
+    /* ==================================================
+       CLICAR NOS INDICADORES
+    ================================================== */
+
+    indicadoresEditorHistoria.forEach(
+        function (indicador) {
+
+            indicador.addEventListener(
+                "click",
+                function () {
+
+                    if (!carrosselEditorHistoria) {
+                        return;
+                    }
+
+
+                    const indice =
+                        Number(
+                            indicador.dataset.tela
+                        );
+
+
+                    if (
+                        Number.isNaN(indice)
+                    ) {
+                        return;
+                    }
+
+
+                    carrosselEditorHistoria.scrollTo({
+
+                        left:
+                            carrosselEditorHistoria.clientWidth *
+                            indice,
+
+                        behavior: "smooth"
+                    });
+                }
+            );
+        }
     );
 
-}
+
+    /* ==================================================
+       GARANTIR PRIMEIRA TELA AO ABRIR
+    ================================================== */
+
+    function iniciarEditorHistoria() {
+
+        if (!carrosselEditorHistoria) {
+            return;
+        }
+
+
+        carrosselEditorHistoria.scrollTo({
+
+            left: 0,
+
+            behavior: "auto"
+        });
+
+
+        indicadoresEditorHistoria.forEach(
+            function (indicador, indice) {
+
+                indicador.classList.toggle(
+                    "ativo",
+                    indice === 0
+                );
+            }
+        );
+    }
+
+
+    /* ==================================================
+       AJUSTAR INDICADOR AO REDIMENSIONAR
+    ================================================== */
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            atualizarIndicadorHistoria();
+        }
+    );
+
+
+    /* ==================================================
+       DISPONIBILIZAR FUNÇÕES PRINCIPAIS
+       PARA OUTROS SCRIPTS
+    ================================================== */
+
+    window.mostrarBotoesSuperiores =
+        mostrarBotoesSuperiores;
+
+    window.esconderBotoesSuperiores =
+        esconderBotoesSuperiores;
+
+    window.iniciarMusicaApp =
+        iniciarMusicaApp;
+
+    window.fecharEditorHistoria =
+        fecharEditorHistoria;
+
+    window.iniciarEditorHistoria =
+        iniciarEditorHistoria;
+
+
+    /* ==================================================
+       ESTADO INICIAL
+    ================================================== */
+
+    mostrarBotoesSuperiores();
+
+    atualizarIndicadorHistoria();
+
+
+    console.log(
+        "Nosso Cantinho carregado corretamente ❤️"
+    );
+
+});
+
