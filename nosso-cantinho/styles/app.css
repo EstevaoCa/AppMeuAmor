@@ -1,0 +1,1876 @@
+@import url("base.css");
+@import url("inicio.css");
+@import url("videos.css");
+@import url("musicas.css");
+@import url("diario.css");
+@import url("fotos.css");
+
+
+
+
+
+
+
+
+/* =========================
+    ESTRELAS DO APLICATIVO
+========================= */
+
+#estrelasApp {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+    overflow: hidden;
+
+}
+
+/* estrelas pequenas */
+
+#estrelasApp::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.8) 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        80px 80px;
+
+    background-position:
+        10px 20px;
+
+    opacity: 0.5;
+
+}
+
+
+/* estrelas maiores */
+
+#estrelasApp::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.9) 1.5px,
+            transparent 2px
+        );
+
+    background-size:
+        150px 150px;
+
+    background-position:
+        50px 70px;
+
+    opacity: 0.35;
+
+}
+
+
+/* conteúdo fica acima das estrelas */
+
+#app {
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+/* =========================
+    TELAS INTERNAS DO APP
+    ESCONDIDAS NO INÍCIO
+========================= */
+
+#telaVideos,
+#telaMusicas,
+#telaDiario,
+#telaFotosApp {
+
+    display: none;
+
+}
+
+/* =========================
+    BOTÕES SUPERIORES DO APP
+========================= */
+
+.botoesSuperioresApp {
+    position: fixed;
+
+    top: 18px;
+    left: 18px;
+    right: 18px;
+
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    z-index: 100;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+    BOTÕES
+========================= */
+.botaoSuperiorApp {
+    pointer-events: auto;
+
+    padding: 9px 16px;
+
+    border: 1px solid rgba(255,255,255,0.22);
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.07);
+
+    color: rgba(255,255,255,0.9);
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 4px 20px rgba(0,0,0,0.3);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.botaoSuperiorApp:hover {
+
+    background:
+        rgba(255,255,255,0.14);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.botaoSuperiorApp:active {
+
+    transform:
+        scale(0.96);
+
+}
+
+
+/* =========================
+    CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .botoesSuperioresApp {
+
+        top: 12px;
+
+        left: 12px;
+        right: 12px;
+
+    }
+
+    .botaoSuperiorApp {
+
+        padding:
+            7px 12px;
+
+        font-size: 15px;
+
+    }
+
+}
+
+
+/* =========================
+    MENU SUPERIOR DO APP
+========================= */
+.menuSuperiorApp {
+
+    position: fixed;
+
+    top: 68px;
+    right: 18px;
+
+    width: 210px;
+
+    padding: 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    border-radius: 18px;
+
+    background:
+        rgba(15,15,15,0.88);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    box-shadow:
+        0 8px 35px
+        rgba(0,0,0,0.5);
+
+    z-index: 200;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(-8px)
+        scale(0.97);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+
+}
+
+
+/* =========================
+   MENU ABERTO
+========================= */
+
+.menuSuperiorApp.aberto {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+
+/* =========================
+   ITENS DO MENU
+========================= */
+
+.itemMenuSuperior {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        12px 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        transparent;
+
+    color:
+        rgba(255,255,255,0.9);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 19px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        transform 0.2s ease;
+
+}
+
+
+.itemMenuSuperior:hover {
+
+    background:
+        rgba(255,255,255,0.10);
+
+    transform:
+        translateX(2px);
+
+}
+
+
+.itemMenuSuperior:active {
+
+    transform:
+        scale(0.98);
+
+}
+
+
+/* =========================
+    PAINEL DE CONFIGURAÇÕES
+========================= */
+
+.painelConfiguracoes {
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(90%, 420px);
+
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    border-radius: 22px;
+
+    background:
+        rgba(15,15,15,0.92);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    box-shadow:
+        0 10px 45px
+        rgba(0,0,0,0.6);
+
+    z-index: 300;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.95);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+
+}
+
+
+/* =========================
+    PAINEL ABERTO
+========================= */
+
+.painelConfiguracoes.aberto {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+}
+
+
+/* =========================
+    TÍTULO CONFIGURAÇÕES
+========================= */
+
+.painelConfiguracoes h3 {
+
+    margin-bottom: 25px;
+
+    color: white;
+
+    font-size: 28px;
+
+    font-weight: 400;
+
+    text-align: center;
+
+}
+
+
+/* =========================
+   CONFIGURAÇÃO DA MÚSICA
+========================= */
+
+.configuracaoMusica {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    color:
+        rgba(255,255,255,0.9);
+
+    font-size: 18px;
+
+}
+
+
+/* =========================
+    BOTÃO ON / OFF
+========================= */
+
+.botaoMusicaApp {
+
+    min-width: 55px;
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.20);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,120,170,0.18);
+
+    color: white;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        transform 0.2s ease;
+
+}
+
+
+.botaoMusicaApp:hover {
+
+    background:
+        rgba(255,120,170,0.28);
+
+}
+
+
+.botaoMusicaApp:active {
+
+    transform:
+        scale(0.95);
+
+}
+
+
+/* =========================
+    BOTÃO FECHAR
+========================= */
+
+.botaoFecharConfiguracoes {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding:
+        10px 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.07);
+
+    color:
+        rgba(255,255,255,0.85);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease;
+
+}
+
+
+.botaoFecharConfiguracoes:hover {
+
+    background:
+        rgba(255,255,255,0.13);
+
+}
+
+
+/* =========================
+    CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .menuSuperiorApp {
+
+        top: 58px;
+
+        right: 12px;
+
+        width: 190px;
+
+    }
+
+
+    .itemMenuSuperior {
+
+        padding:
+            11px 12px;
+
+        font-size: 18px;
+
+    }
+
+
+    .painelConfiguracoes {
+
+        width: 90%;
+
+        padding: 20px;
+
+    }
+
+
+    .painelConfiguracoes h3 {
+
+        font-size: 25px;
+
+    }
+
+
+    .configuracaoMusica {
+
+        font-size: 17px;
+
+    }
+
+}
+
+/* =========================
+    BOTÃO MENU
+========================= */
+
+#botaoMenu {
+
+    width: 46px;
+
+    height: 42px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+}
+
+
+/* =========================
+    MENU NO CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    #botaoMenu {
+
+        width: 42px;
+
+        height: 38px;
+
+        font-size: 23px;
+
+    }
+
+}
+
+/* =========================
+   EDITOR DA HISTÓRIA
+========================= */
+
+#telaEditorHistoria {
+    display: none;
+}
+
+/* ==================================================
+   EDITOR DA HISTÓRIA ❤️
+================================================== */
+
+#telaEditorHistoria {
+
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow-y: auto;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(90, 25, 45, 0.18),
+            transparent 45%
+        ),
+        #050505;
+
+    z-index: 100;
+
+    color: rgba(255, 255, 255, 0.95);
+
+}
+
+
+/* ==================================================
+   CABEÇALHO
+================================================== */
+
+.cabecalhoEditorHistoria {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+
+    width: 100%;
+
+    min-height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(5, 5, 5, 0.82);
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+}
+
+
+/* ==================================================
+   TÍTULO
+================================================== */
+
+.cabecalhoEditorHistoria h2 {
+
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(25px, 5vw, 34px);
+
+    font-weight: 400;
+
+    letter-spacing: 0.5px;
+
+    color:
+        rgba(255, 255, 255, 0.95);
+
+    text-shadow:
+        0 0 18px
+        rgba(255, 255, 255, 0.12);
+
+}
+
+
+/* ==================================================
+   BOTÃO VOLTAR
+================================================== */
+
+#botaoVoltarEditorHistoria {
+
+    position: absolute;
+
+    left: 18px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.14);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    color:
+        rgba(255, 255, 255, 0.9);
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+
+}
+
+
+#botaoVoltarEditorHistoria:hover {
+
+    transform:
+        translateY(-50%)
+        scale(1.05);
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border-color:
+        rgba(255, 255, 255, 0.25);
+
+}
+
+
+#botaoVoltarEditorHistoria:active {
+
+    transform:
+        translateY(-50%)
+        scale(0.94);
+
+}
+
+
+/* ==================================================
+   CONTEÚDO
+================================================== */
+
+.conteudoEditorHistoria {
+
+    width: min(94%, 850px);
+
+    margin: 0 auto;
+
+    padding:
+        28px 0 60px;
+
+}
+
+
+/* ==================================================
+   BLOCOS
+================================================== */
+
+.blocoEditorHistoria {
+
+    width: 100%;
+
+    margin-bottom: 22px;
+
+    padding:
+        24px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.30);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+}
+
+
+/* ==================================================
+   TÍTULO DOS BLOCOS
+================================================== */
+
+.blocoEditorHistoria h3 {
+
+    margin:
+        0 0 20px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        25px;
+
+    font-weight: 500;
+
+    color:
+        rgba(255, 255, 255, 0.95);
+
+    padding-bottom:
+        12px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+}
+
+
+/* ==================================================
+   LABEL
+================================================== */
+
+.blocoEditorHistoria label {
+
+    display: block;
+
+    margin:
+        18px 0 8px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        18px;
+
+    color:
+        rgba(255, 255, 255, 0.72);
+
+}
+
+
+/* ==================================================
+   INPUTS E TEXTAREAS
+================================================== */
+
+.blocoEditorHistoria input[type="text"],
+.blocoEditorHistoria textarea {
+
+    width: 100%;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.11);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background:
+        rgba(0, 0, 0, 0.30);
+
+    color:
+        rgba(255, 255, 255, 0.92);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 18px;
+
+    padding:
+        12px 14px;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.blocoEditorHistoria textarea {
+
+    min-height: 95px;
+
+    resize: vertical;
+
+    line-height: 1.45;
+
+}
+
+
+.blocoEditorHistoria input[type="text"]:focus,
+.blocoEditorHistoria textarea:focus {
+
+    border-color:
+        rgba(255, 80, 110, 0.42);
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(255, 40, 80, 0.06);
+
+}
+
+
+/* ==================================================
+   INPUT DE ARQUIVO
+================================================== */
+
+.blocoEditorHistoria input[type="file"] {
+
+    width: 100%;
+
+    padding:
+        11px;
+
+    border:
+        1px dashed
+        rgba(255, 255, 255, 0.16);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    cursor: pointer;
+
+}
+
+
+/* ==================================================
+   ÁREA DOS BOTÕES
+================================================== */
+
+.botoesEditorHistoria {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    width: 100%;
+
+    margin-top: 10px;
+
+}
+
+
+/* ==================================================
+   SALVAR
+================================================== */
+
+#botaoSalvarHistoria {
+
+    width: 100%;
+
+    min-height: 52px;
+
+    border:
+        1px solid
+        rgba(255, 80, 110, 0.30);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(150, 30, 65, 0.32),
+            rgba(90, 20, 45, 0.22)
+        );
+
+    color:
+        rgba(255, 255, 255, 0.95);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.30);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+
+}
+
+
+#botaoSalvarHistoria:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(170, 35, 75, 0.42),
+            rgba(100, 20, 50, 0.28)
+        );
+
+    border-color:
+        rgba(255, 90, 120, 0.45);
+
+}
+
+
+#botaoSalvarHistoria:active {
+
+    transform:
+        scale(0.98);
+
+}
+
+
+/* ==================================================
+   CANCELAR
+================================================== */
+
+#botaoCancelarEdicaoHistoria,
+#botaoPadraoHistoria {
+
+    width: 100%;
+
+    min-height: 48px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.10);
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+#botaoCancelarEdicaoHistoria:hover,
+#botaoPadraoHistoria:hover {
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border-color:
+        rgba(255, 255, 255, 0.18);
+
+}
+
+
+#botaoCancelarEdicaoHistoria:active,
+#botaoPadraoHistoria:active {
+
+    transform:
+        scale(0.98);
+
+}
+
+
+/* ==================================================
+   CELULAR
+================================================== */
+
+@media (max-width: 600px) {
+
+    .cabecalhoEditorHistoria {
+
+        min-height: 64px;
+
+    }
+
+
+    .cabecalhoEditorHistoria h2 {
+
+        font-size: 26px;
+
+    }
+
+
+    #botaoVoltarEditorHistoria {
+
+        left: 12px;
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 23px;
+
+    }
+
+
+    .conteudoEditorHistoria {
+
+        width: 92%;
+
+        padding:
+            20px 0 45px;
+
+    }
+
+
+    .blocoEditorHistoria {
+
+        padding: 18px;
+
+        border-radius: 17px;
+
+        margin-bottom: 16px;
+
+    }
+
+
+    .blocoEditorHistoria h3 {
+
+        font-size: 23px;
+
+    }
+
+
+    .blocoEditorHistoria label {
+
+        font-size: 17px;
+
+    }
+
+
+    .blocoEditorHistoria input[type="text"],
+    .blocoEditorHistoria textarea {
+
+        font-size: 17px;
+
+    }
+
+}
+
+/* ==================================================
+   CARROSSEL DO EDITOR
+================================================== */
+
+.carrosselEditorHistoria {
+
+    width: 100%;
+
+}
+
+
+/* ==================================================
+   CADA TELA DO EDITOR
+   COMPUTADOR
+================================================== */
+
+.telaEditorHistoriaItem {
+
+    width: 100%;
+
+}
+
+
+/* ==================================================
+   INDICADORES
+================================================== */
+
+.indicadoresEditorHistoria {
+
+    display: none;
+
+}
+
+
+/* ==================================================
+   TEXTO SALVAR
+================================================== */
+
+.textoSalvarHistoria {
+
+    margin: 0 0 25px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 19px;
+
+    line-height: 1.5;
+
+    text-align: center;
+
+    color:
+        rgba(255, 255, 255, 0.68);
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 600px) {
+
+
+    /* ==============================================
+       ÁREA DO EDITOR
+    ============================================== */
+
+    #telaEditorHistoria {
+
+        height: 100vh;
+
+        min-height: 100vh;
+
+        overflow: hidden;
+
+    }
+
+
+    /* ==============================================
+       CARROSSEL
+    ============================================== */
+
+    .carrosselEditorHistoria {
+
+        display: flex;
+
+        width: 100%;
+
+        height:
+            calc(100vh - 112px);
+
+        overflow-x: auto;
+
+        overflow-y: hidden;
+
+        scroll-snap-type:
+            x mandatory;
+
+        scroll-behavior: smooth;
+
+        -webkit-overflow-scrolling:
+            touch;
+
+        overscroll-behavior-x:
+            contain;
+
+        scrollbar-width: none;
+
+    }
+
+
+    .carrosselEditorHistoria::-webkit-scrollbar {
+
+        display: none;
+
+    }
+
+
+    /* ==============================================
+       CADA TELA
+    ============================================== */
+
+    .telaEditorHistoriaItem {
+
+        flex:
+            0 0 100%;
+
+        width: 100%;
+
+        min-width: 100%;
+
+        height: 100%;
+
+        overflow-y: auto;
+
+        overflow-x: hidden;
+
+        scroll-snap-align:
+            start;
+
+        scroll-snap-stop:
+            always;
+
+        padding:
+            20px 18px 30px;
+
+        scrollbar-width: none;
+
+    }
+
+
+    .telaEditorHistoriaItem::-webkit-scrollbar {
+
+        display: none;
+
+    }
+
+
+    /* ==============================================
+       BLOCO
+    ============================================== */
+
+    .telaEditorHistoriaItem
+    .blocoEditorHistoria {
+
+        width: 100%;
+
+        margin:
+            0 auto;
+
+        padding:
+            20px;
+
+        border-radius:
+            20px;
+
+    }
+
+
+    /* ==============================================
+       TÍTULO
+    ============================================== */
+
+    .telaEditorHistoriaItem
+    .blocoEditorHistoria h3 {
+
+        font-size:
+            25px;
+
+        margin-bottom:
+            20px;
+
+    }
+
+
+    /* ==============================================
+       LABEL
+    ============================================== */
+
+    .telaEditorHistoriaItem
+    .blocoEditorHistoria label {
+
+        font-size:
+            18px;
+
+        margin-top:
+            18px;
+
+    }
+
+
+    /* ==============================================
+       CAMPOS
+    ============================================== */
+
+    .telaEditorHistoriaItem
+    .blocoEditorHistoria textarea {
+
+        font-size:
+            17px;
+
+        line-height:
+            1.45;
+
+    }
+
+
+    /* ==============================================
+       INDICADORES
+    ============================================== */
+
+    .indicadoresEditorHistoria {
+
+        position:
+            fixed;
+
+        left: 50%;
+
+        bottom:
+            18px;
+
+        transform:
+            translateX(-50%);
+
+        z-index:
+            200;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap:
+            5px;
+
+        padding:
+            7px 10px;
+
+        border:
+            1px solid
+            rgba(255,255,255,0.08);
+
+        border-radius:
+            20px;
+
+        background:
+            rgba(0,0,0,0.48);
+
+        backdrop-filter:
+            blur(10px);
+
+        -webkit-backdrop-filter:
+            blur(10px);
+
+    }
+
+
+    /* ==============================================
+       TRAÇOS
+    ============================================== */
+
+    .indicadorEditor {
+
+        display: block;
+
+        width:
+            18px;
+
+        height:
+            3px;
+
+        border-radius:
+            10px;
+
+        background:
+            rgba(255,255,255,0.22);
+
+        transition:
+            width 0.3s ease,
+            background 0.3s ease,
+            opacity 0.3s ease;
+
+        opacity:
+            0.7;
+
+    }
+
+
+    /* ==============================================
+       TRAÇO ATIVO
+    ============================================== */
+
+    .indicadorEditor.ativo {
+
+        width:
+            30px;
+
+        background:
+            rgba(255,255,255,0.90);
+
+        opacity:
+            1;
+
+    }
+
+
+    /* ==============================================
+       TELA DE SALVAR
+    ============================================== */
+
+    .telaSalvarHistoria {
+
+        display: flex;
+
+        align-items: flex-start;
+
+        justify-content: center;
+
+    }
+
+
+    .telaSalvarHistoria
+    .blocoEditorHistoria {
+
+        margin-top:
+            10px;
+
+    }
+
+
+    .textoSalvarHistoria {
+
+        font-size:
+            18px;
+
+        line-height:
+            1.5;
+
+    }
+
+
+    /* ==============================================
+       BOTÕES
+    ============================================== */
+
+    .botoesEditorHistoria {
+
+        gap:
+            12px;
+
+    }
+
+}
+
+/* ==================================================
+   EDITOR — COMPUTADOR
+   PAINEL CENTRAL, NÃO TELA INTEIRA
+================================================== */
+
+@media (min-width: 601px) {
+
+    #telaEditorHistoria {
+
+        position: fixed;
+
+        top: 50%;
+
+        left: 50%;
+
+        width: min(900px, 92vw);
+
+        height: 88vh;
+
+        min-height: auto;
+
+        transform:
+            translate(-50%, -50%);
+
+        overflow: hidden;
+
+        border:
+            1px solid
+            rgba(255, 255, 255, 0.10);
+
+        border-radius:
+            24px;
+
+        background:
+            radial-gradient(
+                circle at 50% 10%,
+                rgba(90, 25, 45, 0.20),
+                transparent 50%
+            ),
+            #050505;
+
+        box-shadow:
+            0 25px 80px
+            rgba(0, 0, 0, 0.65);
+
+    }
+
+
+    /* =========================
+       CARROSSEL NO PC
+    ========================= */
+
+    .carrosselEditorHistoria {
+
+        height:
+            calc(100% - 70px);
+
+        overflow-y: auto;
+
+        overflow-x: hidden;
+
+    }
+
+
+    .telaEditorHistoriaItem {
+
+        width: 100%;
+
+    }
+
+
+    /* =========================
+       CABEÇALHO
+    ========================= */
+
+    .cabecalhoEditorHistoria {
+
+        min-height: 70px;
+
+    }
+
+}
+
+.blocoEditorHistoria textarea {
+    resize: none;
+}
+
+/* ==================================================
+   BOTÕES DO EDITOR DA HISTÓRIA
+================================================== */
+
+.botoesEditorHistoria {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+/* BOTÃO PADRÃO */
+
+.botaoSalvarHistoria,
+.botaoCancelarEdicaoHistoria {
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: #fff;
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.2s ease;
+
+}
+
+
+/* EFEITO AO TOCAR */
+
+.botaoSalvarHistoria:active,
+.botaoCancelarEdicaoHistoria:active {
+
+    transform: scale(0.96);
+
+}
+
+
+/* PASSAR O MOUSE */
+
+.botaoSalvarHistoria:hover,
+.botaoCancelarEdicaoHistoria:hover {
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border-color: rgba(255, 255, 255, 0.30);
+
+}
+
+/* ==================================================
+   BOTÃO PADRÃO
+================================================== */
+
+.botaoPadraoHistoria {
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    color:
+        rgba(255, 255, 255, 0.85);
+
+    padding:
+        10px 18px;
+
+    border-radius:
+        10px;
+
+    font-family:
+        inherit;
+
+    font-size:
+        14px;
+
+    cursor:
+        pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+.botaoPadraoHistoria:hover {
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border-color:
+        rgba(255, 255, 255, 0.30);
+}
+
+
+.botaoPadraoHistoria:active {
+
+    transform:
+        scale(0.96);
+}

@@ -1,0 +1,701 @@
+/* ========================= 
+   TELA DE FOTOS 
+========================= */ 
+ 
+.telaFotosApp { 
+ 
+    position: fixed; 
+ 
+    inset: 0; 
+ 
+    width: 100%; 
+    height: 100%; 
+ 
+    padding: 25px; 
+ 
+    overflow-y: auto; 
+ 
+    background: 
+        radial-gradient( 
+            circle at center, 
+            rgba(255,120,170,0.10), 
+            transparent 60% 
+        ), 
+        #000; 
+ 
+} 
+ 
+ 
+/* ========================= 
+   CABEÇALHO 
+========================= */ 
+ 
+.cabecalhoFotosApp { 
+ 
+    width: 100%; 
+ 
+    max-width: 1000px; 
+ 
+    margin: 0 auto 30px; 
+ 
+    display: flex; 
+ 
+    align-items: center; 
+ 
+    gap: 20px; 
+ 
+} 
+ 
+ 
+.cabecalhoFotosApp h2 { 
+ 
+    flex: 1; 
+ 
+    text-align: center; 
+ 
+    font-size: 
+        clamp( 
+            30px, 
+            7vw, 
+            48px 
+        ); 
+ 
+    font-weight: 400; 
+ 
+    color: white; 
+ 
+    text-shadow: 
+        0 2px 10px 
+        rgba(0,0,0,0.8), 
+ 
+        0 0 25px 
+        rgba(255,255,255,0.25); 
+ 
+} 
+ 
+ 
+/* ========================= 
+    CONTEÚDO 
+========================= */ 
+ 
+.conteudoFotosApp { 
+ 
+    width: 100%; 
+ 
+    max-width: 1000px; 
+ 
+    margin: 0 auto; 
+ 
+    text-align: center; 
+ 
+} 
+ 
+ 
+/* ========================= 
+   BOTÃO ADICIONAR 
+========================= */ 
+ 
+.botaoAdicionarFoto { 
+ 
+    display: inline-flex; 
+ 
+    align-items: center; 
+ 
+    justify-content: center; 
+ 
+    padding: 
+        14px 28px; 
+ 
+    border: 
+        1px solid 
+        rgba(255,255,255,0.35); 
+ 
+    border-radius: 30px; 
+ 
+    background: 
+        rgba(255,255,255,0.08); 
+ 
+    color: white; 
+ 
+    font-family: 
+        "Cormorant Garamond", 
+        serif; 
+ 
+    font-size: 
+        clamp( 
+            20px, 
+            4vw, 
+            26px 
+        ); 
+ 
+    cursor: pointer; 
+ 
+    box-shadow: 
+        0 5px 25px 
+        rgba(0,0,0,0.3); 
+ 
+    transition: 
+        transform 0.3s ease, 
+        background 0.3s ease; 
+ 
+} 
+ 
+ 
+.botaoAdicionarFoto:hover { 
+ 
+    background: 
+        rgba(255,255,255,0.15); 
+ 
+    transform: 
+        translateY(-2px); 
+ 
+} 
+ 
+ 
+/* ========================= 
+   GALERIA 
+========================= */ 
+ 
+.galeriaFotosApp { 
+ 
+    margin-top: 35px; 
+ 
+    display: grid; 
+ 
+    grid-template-columns: 
+        repeat( 
+            auto-fit, 
+            minmax( 
+                180px, 
+                1fr 
+            ) 
+        ); 
+ 
+    gap: 18px; 
+ 
+} 
+ 
+ 
+/* ========================= 
+   ITEM DA FOTO 
+========================= */ 
+ 
+.fotoItemApp { 
+ 
+    position: relative; 
+ 
+    padding: 10px; 
+ 
+    border: 
+        1px solid 
+        rgba(255,255,255,0.15); 
+ 
+    border-radius: 18px; 
+ 
+    background: 
+        rgba(255,255,255,0.06); 
+ 
+    box-shadow: 
+        0 5px 25px 
+        rgba(0,0,0,0.4); 
+ 
+} 
+ 
+ 
+.fotoSalvaApp { 
+ 
+    display: block; 
+ 
+    width: 100%; 
+ 
+    aspect-ratio: 1 / 1; 
+ 
+    object-fit: cover; 
+ 
+    border-radius: 12px; 
+ 
+} 
+ 
+ 
+/* ========================= 
+   BOTÃO EXCLUIR 
+========================= */ 
+ 
+.botaoExcluirFoto { 
+ 
+    width: 100%; 
+ 
+    margin-top: 10px; 
+ 
+    padding: 
+        8px 14px; 
+ 
+    border: 
+        1px solid 
+        rgba(255,255,255,0.2); 
+ 
+    border-radius: 20px; 
+ 
+    background: 
+        rgba(255,80,100,0.12); 
+ 
+    color: white; 
+ 
+    cursor: pointer; 
+ 
+    font-family: 
+        "Cormorant Garamond", 
+        serif; 
+ 
+    font-size: 17px; 
+ 
+} 
+ 
+ 
+/* ========================= 
+   CELULAR 
+========================= */ 
+ 
+@media (max-width: 600px) { 
+ 
+    .telaFotosApp { 
+ 
+        padding: 
+            18px 12px; 
+ 
+    } 
+ 
+ 
+    .cabecalhoFotosApp { 
+ 
+        gap: 12px; 
+ 
+        margin-bottom: 25px; 
+ 
+    } 
+ 
+ 
+    .galeriaFotosApp { 
+ 
+        grid-template-columns: 
+            repeat( 
+                2, 
+                1fr 
+            ); 
+ 
+        gap: 12px; 
+ 
+    } 
+ 
+ 
+    .fotoItemApp { 
+ 
+        padding: 7px; 
+ 
+        border-radius: 14px; 
+ 
+    } 
+ 
+ 
+    .fotoSalvaApp { 
+ 
+        border-radius: 9px; 
+ 
+    } 
+ 
+} 
+ 
+ 
+/* ========================= 
+   VISUALIZADOR DE FOTO 
+========================= */ 
+ 
+.visualizadorFoto { 
+ 
+    position: fixed; 
+ 
+    inset: 0; 
+ 
+    width: 100%; 
+    height: 100%; 
+ 
+    display: flex; 
+ 
+    align-items: center; 
+    justify-content: center; 
+ 
+    padding: 30px; 
+ 
+    background: 
+        rgba(0,0,0,0.92); 
+ 
+    backdrop-filter: 
+        blur(10px); 
+ 
+    -webkit-backdrop-filter: 
+        blur(10px); 
+ 
+    opacity: 0; 
+ 
+    visibility: hidden; 
+ 
+    pointer-events: none; 
+ 
+    z-index: 1000; 
+ 
+    transition: 
+        opacity 0.25s ease, 
+        visibility 0.25s ease; 
+ 
+} 
+ 
+ 
+.visualizadorFoto.aberto { 
+ 
+    opacity: 1; 
+ 
+    visibility: visible; 
+ 
+    pointer-events: auto; 
+ 
+} 
+ 
+ 
+/* ========================= 
+   IMAGEM GRANDE 
+========================= */ 
+ 
+.imagemVisualizada { 
+ 
+    display: block; 
+ 
+    max-width: 92vw; 
+ 
+    max-height: 88vh; 
+ 
+    width: auto; 
+    height: auto; 
+ 
+    object-fit: contain; 
+ 
+    border-radius: 12px; 
+ 
+    box-shadow: 
+        0 15px 60px 
+        rgba(0,0,0,0.8); 
+ 
+    transform: 
+        scale(0.94); 
+ 
+    transition: 
+        transform 0.3s ease; 
+ 
+} 
+ 
+ 
+.visualizadorFoto.aberto 
+.imagemVisualizada { 
+ 
+    transform: 
+        scale(1); 
+ 
+} 
+ 
+ 
+/* ========================= 
+   BOTÃO FECHAR 
+========================= */ 
+ 
+.botaoFecharFoto { 
+ 
+    position: absolute; 
+ 
+    top: 20px; 
+    right: 20px; 
+ 
+    width: 48px; 
+    height: 48px; 
+ 
+    display: flex; 
+ 
+    align-items: center; 
+    justify-content: center; 
+ 
+    border: 
+        1px solid 
+        rgba(255,255,255,0.25); 
+ 
+    border-radius: 50%; 
+ 
+    background: 
+        rgba(255,255,255,0.08); 
+ 
+    color: white; 
+ 
+    font-size: 22px; 
+ 
+    cursor: pointer; 
+ 
+    backdrop-filter: 
+        blur(8px); 
+ 
+    -webkit-backdrop-filter: 
+        blur(8px); 
+ 
+    box-shadow: 
+        0 5px 25px 
+        rgba(0,0,0,0.5); 
+ 
+    transition: 
+        background 0.25s ease, 
+        transform 0.25s ease; 
+ 
+} 
+ 
+ 
+.botaoFecharFoto:hover { 
+ 
+    background: 
+        rgba(255,255,255,0.16); 
+ 
+    transform: 
+        scale(1.05); 
+ 
+} 
+ 
+ 
+.botaoFecharFoto:active { 
+ 
+    transform: 
+        scale(0.94); 
+ 
+} 
+ 
+ 
+/* ========================= 
+   CELULAR 
+========================= */ 
+ 
+@media (max-width: 600px) { 
+ 
+    .visualizadorFoto { 
+ 
+        padding: 15px; 
+ 
+    } 
+ 
+ 
+    .imagemVisualizada { 
+ 
+        max-width: 96vw; 
+ 
+        max-height: 84vh; 
+ 
+        border-radius: 9px; 
+ 
+    } 
+ 
+ 
+    .botaoFecharFoto { 
+ 
+        top: 12px; 
+        right: 12px; 
+ 
+        width: 42px; 
+        height: 42px; 
+ 
+        font-size: 19px; 
+ 
+    } 
+ 
+} 
+ 
+ 
+/* ========================= 
+   EVITAR SCROLL ATRÁS 
+========================= */ 
+ 
+body.visualizadorAberto { 
+ 
+    overflow: hidden; 
+ 
+} 
+
+
+/* =========================
+   SETAS — TROCAR FOTO
+========================= */
+
+.setaFoto {
+
+    position: fixed;
+
+    top: 50%;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.07);
+
+    color:
+        rgba(255,255,255,0.9);
+
+    font-size: 32px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    box-shadow:
+        0 4px 20px
+        rgba(0,0,0,0.4);
+
+    z-index: 1100;
+
+    transform:
+        translateY(-50%);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease;
+
+}
+
+
+/* =========================
+   SETA ESQUERDA
+========================= */
+
+.setaFotoAnterior {
+
+    left: 25px;
+
+    right: auto;
+
+}
+
+
+/* =========================
+   SETA DIREITA
+========================= */
+
+.setaFotoProxima {
+
+    right: 25px;
+
+    left: auto;
+
+}
+
+
+/* =========================
+   PASSAR O MOUSE
+========================= */
+
+.setaFoto:hover {
+
+    background:
+        rgba(255,255,255,0.14);
+
+    border-color:
+        rgba(255,255,255,0.30);
+
+    transform:
+        translateY(-50%)
+        scale(1.05);
+
+}
+
+
+/* =========================
+   CLICAR
+========================= */
+
+.setaFoto:active {
+
+    transform:
+        translateY(-50%)
+        scale(0.90);
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .setaFoto {
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 26px;
+
+    }
+
+
+    .setaFotoAnterior {
+
+        left: 10px;
+
+        right: auto;
+
+    }
+
+
+    .setaFotoProxima {
+
+        right: 10px;
+
+        left: auto;
+
+    }
+
+}
+
+/* =========================
+   MENSAGEM
+========================= */
+
+.mensagemDiario {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color:
+        rgba(255, 255, 255, 0.7);
+
+    font-size: 21px;
+
+}

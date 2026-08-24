@@ -212,7 +212,7 @@ botaoEntrarDireto.addEventListener(
         );
 
         window.location.href =
-            "Nosso Cantinho/index.html?inicio=1";
+            "../nosso-cantinho/index.html?inicio=1";
 
     }
 );

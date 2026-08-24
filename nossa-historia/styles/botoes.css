@@ -1,0 +1,561 @@
+/* =========================
+    BOTÕES
+========================= */
+
+#botaoIniciar,
+#botaoComecar,
+.botaoContinuar {
+
+    border: 1px solid
+        rgba(255,255,255,0.35);
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color:
+        rgba(255,255,255,0.95);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        22px;
+
+    padding:
+        12px 28px;
+
+    border-radius:
+        30px;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.35);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+/* =========================
+   EFEITO AO PASSAR
+========================= */
+
+#botaoIniciar:hover,
+#botaoComecar:hover,
+.botaoContinuar:hover {
+
+    background:
+        rgba(255,255,255,0.16);
+
+    transform:
+        scale(1.04);
+
+}
+
+
+/* =========================
+   BOTÃO AO CLICAR
+========================= */
+
+#botaoIniciar:active,
+#botaoComecar:active,
+.botaoContinuar:active {
+
+    transform:
+        scale(0.97);
+
+}
+
+
+/* =========================
+   BOTÃO COMEÇAR
+========================= */
+
+#botaoComecar {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+}
+
+
+/* =========================
+   BOTÃO COMEÇAR VISÍVEL
+========================= */
+
+#botaoComecar.visivel {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    animation:
+        aparecerBotao
+        1.5s
+        ease
+        forwards;
+
+}
+
+
+/* =========================
+   BOTÃO INICIAR SUMINDO
+========================= */
+
+#botaoIniciar.sumir {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    animation: none;
+
+}
+
+/* =========================
+   ANIMAÇÃO
+========================= */
+
+@keyframes aparecerBotao {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    #botaoIniciar,
+    #botaoComecar,
+    .botaoContinuar {
+
+        font-size:
+            clamp(
+                18px,
+                5vw,
+                23px
+            );
+
+        padding:
+            10px 22px;
+
+    }
+
+}
+
+/* =========================
+   BOTÃO TOQUE PARA INICIAR
+   MINIMALISTA / INVISÍVEL
+========================= */
+
+#botaoIniciar {
+
+    width: 180px;
+    height: 180px;
+
+    padding: 20px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    text-align: center;
+    line-height: 1.2;
+
+    border: 1px solid
+        rgba(255,255,255,0.06);
+
+    background:
+        rgba(214, 14, 164, 0.015);
+
+    color:
+        rgba(255,255,255,0.88);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.4px;
+
+    backdrop-filter:
+        blur(3px);
+
+    -webkit-backdrop-filter:
+        blur(3px);
+
+    box-shadow:
+        0 0 15px
+        rgba(255,255,255,0.015);
+
+    text-shadow:
+        0 1px 8px
+        rgba(0,0,0,0.55);
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+
+}
+
+
+/* =========================
+   BOTÃO TOQUE PARA INICIAR
+   CÍRCULO GALÁCTICO
+========================= */
+
+#botaoIniciar {
+
+    width: 180px;
+    height: 180px;
+
+    padding: 20px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    text-align: center;
+    line-height: 1.2;
+
+    border: 1px solid
+        rgba(210, 130, 160, 0.16);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(120, 35, 65, 0.08),
+            rgba(33, 15, 22, 0.025) 55%,
+            transparent 75%
+        );
+
+    color:
+        rgba(255,255,255,0.92);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.4px;
+
+    backdrop-filter:
+        blur(4px);
+
+    -webkit-backdrop-filter:
+        blur(4px);
+
+    box-shadow:
+        0 0 20px
+        rgba(120,35,65,0.08);
+
+    text-shadow:
+        0 1px 8px
+        rgba(0,0,0,0.55);
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+
+}
+
+
+/* =========================
+   REFLEXO INTERNO
+========================= */
+
+#botaoIniciar::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            rgba(255,255,255,0.07),
+            transparent 38%
+        );
+
+    opacity: 0.55;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================
+   BRILHO GALÁCTICO SUAVE
+========================= */
+
+#botaoIniciar::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -8px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 55%,
+            rgba(150,45,80,0.08) 75%,
+            transparent 100%
+        );
+
+    opacity: 0.7;
+
+    pointer-events: none;
+
+    animation:
+        pulsarBotaoGalaxia
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes pulsarBotaoGalaxia {
+
+    0%, 100% {
+
+        opacity: 0.45;
+
+        transform:
+            scale(0.96);
+
+    }
+
+    50% {
+
+        opacity: 0.9;
+
+        transform:
+            scale(1.04);
+
+    }
+
+}
+
+
+/* =========================
+   PASSAR O MOUSE
+========================= */
+
+#botaoIniciar:hover {
+
+    transform:
+        scale(1.035);
+
+    border-color:
+        rgba(220,145,175,0.28);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(140,40,75,0.13),
+            rgba(33,15,22,0.035) 58%,
+            transparent 78%
+        );
+
+    box-shadow:
+        0 0 30px
+        rgba(130,40,75,0.16);
+
+}
+
+
+/* =========================
+   TOQUE / CLIQUE
+========================= */
+
+#botaoIniciar:active {
+
+    transform:
+        scale(0.97);
+
+}
+
+
+/* =========================
+   ENTRADA SUAVE
+========================= */
+
+#botaoIniciar {
+
+    animation:
+        surgirBotao
+        1.8s
+        ease
+        forwards;
+
+}
+
+
+@keyframes surgirBotao {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.94);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    #botaoIniciar {
+
+        width: 150px;
+        height: 150px;
+
+        padding: 18px;
+
+        font-size: 19px;
+
+    }
+
+}
+
+
+/* =========================
+   APARECER
+========================= */
+
+@keyframes surgirBotao {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.94);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================
+   ENTRADA SUAVE
+========================= */
+
+#botaoIniciar {
+
+    animation:
+        surgirBotao 1.8s ease forwards;
+
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    #botaoIniciar {
+
+        width: 150px;
+        height: 150px;
+
+        padding: 18px;
+
+        font-size: 19px;
+
+    }
+
+}
