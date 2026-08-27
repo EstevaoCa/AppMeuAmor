@@ -1,5 +1,4 @@
 
-
 /* =========================
     MOSTRAR FRASE
 ========================= */
@@ -12,6 +11,18 @@ function mostrarFrase() {
     frase.classList.remove(
         "sumir"
     );
+
+    if (imagemBotaoApp) {
+        imagemBotaoApp.classList.remove(
+            "aparecer"
+        );
+    }
+
+    if (efeitoBotaoApp) {
+        efeitoBotaoApp.classList.remove(
+            "aparecer"
+        );
+    }
 
     frase.classList.add(
         "aparecer"
@@ -55,7 +66,7 @@ function mostrarFrase() {
 
 
 /* =========================
-    MOSTRAR BOTÃO
+   MOSTRAR BOTÃO E IMAGEM
 ========================= */
 
 function mostrarBotao() {
@@ -64,8 +75,27 @@ function mostrarBotao() {
         "visivel"
     );
 
-}
+    if (imagemBotaoApp) {
 
+        imagemBotaoApp.classList.add(
+            "aparecer"
+        );
+
+    }
+
+    const efeitoBotaoApp =
+        document.getElementById(
+            "efeitoBotaoApp"
+        );
+
+    if (efeitoBotaoApp) {
+
+        efeitoBotaoApp.classList.add(
+            "aparecer"
+        );
+
+    }
+}
 
 /* =========================
     INICIAR EXPERIÊNCIA
@@ -221,7 +251,7 @@ botaoContinuar.addEventListener(
                     "mostrarFoto"
                 );
 
-            }, 3000);
+            }, 1500);
 
         }, 1500);
 
@@ -549,9 +579,201 @@ if (botaoEntrarApp) {
 
 
             window.location.href =
-                "app/index.html";
+                "../nosso-cantinho/index.html";
 
         }
     );
 
 }
+
+/* ==================================================
+   HISTÓRIA PERSONALIZADA ❤️
+================================================== */
+
+function carregarHistoriaPersonalizada() {
+
+    const dadosSalvos = JSON.parse(
+        localStorage.getItem(
+            "historiaPersonalizada"
+        )
+    ) || {};
+
+    const fotosPersonalizadas = [
+        dadosSalvos.foto1,
+        dadosSalvos.foto2,
+        dadosSalvos.foto3,
+        dadosSalvos.foto4,
+        dadosSalvos.foto5,
+        dadosSalvos.foto6,
+        dadosSalvos.foto7,
+        dadosSalvos.foto8
+    ];
+
+    const fotosHistoria = [
+        document.getElementById("fotoPrincipal"),
+        document.querySelector("#fotoMemoria img"),
+        ...document.querySelectorAll(".fotosTela5 img"),
+        document.querySelector(".molduraAmor img")
+    ];
+
+    fotosPersonalizadas.forEach(
+        function (foto, indice) {
+
+            if (foto && fotosHistoria[indice]) {
+                fotosHistoria[indice].src = foto;
+            }
+        }
+    );
+
+
+    /* =========================
+       TELA 1 — PRIMEIRA FOTO
+    ========================= */
+
+    const mensagemFoto =
+        document.querySelector(
+            "#mensagemFoto p"
+        );
+
+    if (
+        mensagemFoto &&
+        dadosSalvos.mensagemFoto
+    ) {
+
+        mensagemFoto.textContent =
+            dadosSalvos.mensagemFoto;
+
+    }
+
+
+    /* =========================
+       TELA 2 — MEMÓRIA
+    ========================= */
+
+    const perguntaMemoria =
+        document.getElementById(
+            "perguntaMemoria"
+        );
+
+    if (
+        perguntaMemoria &&
+        dadosSalvos.perguntaMemoria
+    ) {
+
+        perguntaMemoria.textContent =
+            dadosSalvos.perguntaMemoria;
+
+    }
+
+
+    const mensagemMemoria =
+        document.querySelectorAll(
+            "#mensagemMemoria p"
+        );
+
+    if (
+        mensagemMemoria.length >= 2
+    ) {
+
+        if (
+            dadosSalvos.mensagemMemoria1
+        ) {
+
+            mensagemMemoria[0].textContent =
+                dadosSalvos.mensagemMemoria1;
+
+        }
+
+        if (
+            dadosSalvos.mensagemMemoria2
+        ) {
+
+            mensagemMemoria[1].textContent =
+                dadosSalvos.mensagemMemoria2;
+
+        }
+
+    }
+
+
+    const textosVideoPersonalizados = [
+
+        dadosSalvos.textoVideo1,
+        dadosSalvos.textoVideo2,
+        dadosSalvos.textoVideo3,
+        dadosSalvos.textoVideo4
+
+    ];
+
+    textosVideoPersonalizados.forEach(
+        (texto, indice) => {
+
+            if (texto) {
+
+                const elemento =
+                    document.getElementById(
+                        `textoVideo${indice + 1}`
+                    );
+
+                if (elemento) {
+
+                    elemento.textContent =
+                        texto;
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       TELA 6 — FINAL
+    ========================= */
+
+    const textoAmor =
+        document.querySelector(
+            ".textoAmor"
+        );
+
+    if (
+        textoAmor &&
+        dadosSalvos.textoAmor
+    ) {
+
+        textoAmor.textContent =
+            dadosSalvos.textoAmor;
+
+    }
+
+
+    const mensagemApp =
+        document.querySelector(
+            ".mensagemApp"
+        );
+
+    if (
+        mensagemApp &&
+        dadosSalvos.mensagemApp
+    ) {
+
+        mensagemApp.textContent =
+            dadosSalvos.mensagemApp;
+
+    }
+
+}
+
+/* ==================================================
+   CARREGAR HISTÓRIA PERSONALIZADA
+================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        carregarHistoriaPersonalizada();
+
+    }
+);

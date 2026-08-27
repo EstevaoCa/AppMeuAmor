@@ -29,6 +29,15 @@ const botaoContinuarHistoria =
         "botaoContinuarHistoria"
     );
 
+const imagemBotaoApp =
+    document.getElementById(
+        "imagemBotaoApp"
+    );
+
+const efeitoBotaoApp =
+    document.getElementById(
+        "efeitoBotaoApp"
+    );
 
 /* =========================
    BOTÕES DE RETORNO
@@ -203,7 +212,7 @@ botaoEntrarDireto.addEventListener(
         );
 
         window.location.href =
-            "app/index.html?inicio=1";
+            "../nosso-cantinho/index.html?inicio=1";
 
     }
 );
